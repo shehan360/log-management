@@ -9,6 +9,40 @@ router.get('/lognames', function (req, res) {
             res.json({ log });
     });
 });
+
+
+router.post('/lognamesbylocation', function (req, res) {
+    Log.getLogNamesByLocation(req.body.location,(err, log) => {
+        if (err) throw err;
+        else
+            res.json(log);
+    });
+});
+
+router.post('/lognamesbydate', function (req, res) {
+    Log.getLogNamesByDate(req.body.date,(err, log) => {
+        if (err) throw err;
+        else
+            res.json(log);
+    });
+});
+
+router.post('/lognamesbylocationdate', function (req, res) {
+    Log.getLogNamesByLocationDate(req.body.date,req.body.location,(err, log) => {
+        if (err) throw err;
+        else
+            res.json(log);
+    });
+});
+
+router.get('/locations', function (req, res) {
+    Log.getLocations((err, log) => {
+        if (err) throw err;
+        else
+            res.json({ log });
+    });
+});
+
 router.post('/nosucesstransactions', function (req, res) {
     Log.getNoSuccessTransactions(req.body.logName, (err, log) => {
         if (err) throw err;
@@ -106,6 +140,21 @@ router.post('/othertechnicalerrors',function(req,res){
     })
 });
 
+router.post('/transactionamountsbytime',function(req,res){
+    Log.getTransactionAmountsByTime(req.body.logName,(err,log)=>{
+        if (err) throw err;
+        else              
+            res.json(log);
+    })
+});
+
+router.post('/nofailedtransactions',function(req,res){
+    Log.getNoFailedTransactions(req.body.logName,(err,log)=>{
+        if (err) throw err;
+        else              
+            res.json(log);
+    })
+});
 
 
 

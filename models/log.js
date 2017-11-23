@@ -14,6 +14,100 @@ module.exports.getLogNames = function(callback){
     Log.find({},{'_id':0,'logName':1},callback);
 }
 
+module.exports.getLocations = function(callback){
+  Log.find({},{'_id':0,'location':1},callback);
+}
+
+
+module.exports.getLogNamesByLocation = function(location,callback){
+    var query=  [{
+      $match: {
+               "location":location
+              }
+      },
+      {
+          $project:{
+              "_id":0,
+              "logName":1
+          }
+      }];
+    Log.aggregate(query,callback);
+}
+
+module.exports.getLogNamesByDate = function(date,callback){
+  var qdate=new Date(date+"T00:00:00+05:30");
+  var query=  [
+    {
+      $project:{
+          "upB":{$add:[qdate,86400000]},
+          "timeValidFrom":1,
+          "logName":1
+      }
+  },
+  {
+  $match: {
+           "timeValidFrom":{ $gte : qdate },
+          }
+  },
+  {
+      $project:{
+          "_id":0,
+          "logName":1,
+          "test":{$lt:["$timeValidFrom","$upB"]}
+      }
+  },
+  {
+  $match: {
+           "test":true
+          }
+  },
+  {
+      $project:{
+          "logName":1
+      }
+  }
+  ];
+  Log.aggregate(query,callback);
+}
+
+module.exports.getLogNamesByLocationDate = function(date,location,callback){
+  var qdate=new Date(date+"T00:00:00+05:30");
+  var query=  [
+    {
+      $project:{
+          "upB":{$add:[qdate,86400000]},
+          "timeValidFrom":1,
+          "logName":1,
+          "location":1
+      }
+  },
+  {
+  $match: {
+           "timeValidFrom":{ $gte : qdate },
+           "location":location
+          }
+  },
+  {
+      $project:{
+          "_id":0,
+          "logName":1,
+          "test":{$lt:["$timeValidFrom","$upB"]}
+      }
+  },
+  {
+  $match: {
+           "test":true
+          }
+  },
+  {
+      $project:{
+          "logName":1
+      }
+  }
+  ];
+  Log.aggregate(query,callback);
+}
+
 module.exports.getNoSuccessTransactions = function(logname,callback){
     var query=  [
         {$unwind:"$transactions"},
@@ -26,7 +120,8 @@ module.exports.getNoSuccessTransactions = function(logname,callback){
         {
           $group: {
             "_id": "$logName",
-            "count":{"$sum":1}
+            "count":{"$sum":1},
+            "amount":{"$sum":"$transactions.amount"}
           }
         }
       ];
@@ -35,23 +130,32 @@ module.exports.getNoSuccessTransactions = function(logname,callback){
 
 module.exports.getTransactionSummary = function(logname,callback){
     var pipeline = [
-        {$unwind:"$transactions"},
-        {
-          $match: {
-            "transactions.status":"success",
-            "logName":logname
-            }
-        },
-        {
-          $group: {
-        "_id": {
-                  "_id": "$logName",
-                  "key": "$transactions.type"
-             },
-            "count":{"$sum":1}
+      {$unwind:"$transactions"},
+      {
+        $match: {
+          "transactions.status":"success",
+          "logName":logname
           }
+      },
+      {
+        $group: {
+      "_id": {
+                "_id": "$logName",
+                "key": "$transactions.type"
+           },
+          "count":{"$sum":1},
+          "amount":{"$sum":"$transactions.amount"}
         }
-      ];
+      },
+      {
+          $project:{
+              "_id":0,
+              "type":"$_id.key",
+              "count":1,
+              "amount":1
+          }
+      }
+    ];
     Log.aggregate(pipeline,callback);
 }
 
@@ -275,6 +379,64 @@ module.exports.getOtherTechnicalErrors = function(logname,callback){
   ];
 
   Log.aggregate(pipeline,callback);
+}
+
+module.exports.getTransactionAmountsByTime = function(logname,callback){
+  var pipeline=[
+    {$unwind:"$transactions"},
+    {
+      $match: {
+          "transactions.status":"success",
+          "logName":logname
+        }
+    },
+    {
+      $group: {
+          "_id": {
+          "key": {$hour:{$add:["$transactions.time",19800000]}},
+          "type":"$transactions.type"
+     },
+    "total":{"$sum":"$transactions.amount"}
+      }
+    },
+    {
+    $project:{
+        "_id":0,
+        "type":"$_id.type",
+        "hour":"$_id.key",
+        "total":1,
+        "comparisonResult": { $strcasecmp: [ "$_id.type", "Query" ] }
+      }
+  },
+   {
+    $match: {
+        $or: [ {"comparisonResult":-1}, {"comparisonResult":1}] 
+      }
+  },
+    { $sort : { type : -1,hour:1 } }
+  ];
+
+  Log.aggregate(pipeline,callback);
+}
+
+
+module.exports.getNoFailedTransactions = function(logname,callback){
+  var query=  [
+      {$unwind:"$transactions"},
+      {
+        $match: {
+            "transactions.status":"fail",
+            "logName":logname
+          }
+      },
+      {
+        $group: {
+          "_id": "$logName",
+          "count":{"$sum":1}
+        }
+      }
+    ];
+  Log.aggregate(query,callback);
 }
 
 
