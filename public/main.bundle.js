@@ -1224,7 +1224,7 @@ var BarchartComponent = /** @class */ (function () {
     };
     BarchartComponent.prototype.ngOnChanges = function () {
         var _this = this;
-        setTimeout(function () { _this.draw(); }, 500);
+        setTimeout(function () { _this.draw(); }, 3500);
     };
     BarchartComponent.prototype.draw = function () {
         if (this.mychart) {
@@ -1342,7 +1342,7 @@ var LinechartComponent = /** @class */ (function () {
         }
         setTimeout(function () {
             _this.test();
-        }, 500);
+        }, 3500);
     };
     LinechartComponent.prototype.ngOnInit = function () {
     };
@@ -1475,7 +1475,7 @@ var ScatterchartComponent = /** @class */ (function () {
     }
     ScatterchartComponent.prototype.ngOnChanges = function () {
         var _this = this;
-        setTimeout(function () { _this.draw(); }, 500);
+        setTimeout(function () { _this.draw(); }, 3500);
     };
     ScatterchartComponent.prototype.ngOnInit = function () { };
     ScatterchartComponent.prototype.draw = function () {
