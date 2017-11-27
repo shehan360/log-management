@@ -40,7 +40,7 @@ router.post('/authenticate',(req, res, next)=>{
                 });
 
                 res.json({
-                    sucess: true,
+                    success: true,
                     token: 'JWT ' +token,
                     user: {
                         id:user._id,

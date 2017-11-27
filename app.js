@@ -21,7 +21,9 @@ const app = express();
 const users=require('./routes/users');
 const logdata=require('./routes/logdata')
 
-const port = process.env.PORT || 8080;
+//const port = process.env.PORT || 8080;
+const port=3000;
+
 
 app.use(cors());
 
