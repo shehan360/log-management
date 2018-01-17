@@ -1903,6 +1903,69 @@ var TransactionsViewComponent = /** @class */ (function () {
                         }
                         _this.dataSet = [];
                         _this.dataSet.push(new DataSet("Total Transactions", "#3e95cd", false, _this.totalt));
+                        _this.logService.getTransactionTypeGraph(currentLog).subscribe(function (data) {
+                            _this.wtttgraph = [];
+                            _this.dtttgraph = [];
+                            _this.btttgraph = [];
+                            _this.dataSet1 = [];
+                            _this.testgraph = [];
+                            //this.test1=this.transactionsByType;
+                            for (var k = _this.logDateOFrom.getHours(), i = 0; i < (_this.logDateOTo.getTime() - _this.logDateOFrom.getTime()) / 3600000; i++, k++) {
+                                var point1 = new Point(new Date(_this.logDateOFrom.getFullYear(), _this.logDateOFrom.getMonth(), _this.logDateOFrom.getDate(), k, 0, 1), 0);
+                                _this.testgraph.push(point1);
+                            }
+                            for (var a = 0; a < _this.transactionsByType.length; a++) {
+                                var gggraph = [];
+                                for (var k = _this.logDateOFrom.getHours(), i = 0; i < (_this.logDateOTo.getTime() - _this.logDateOFrom.getTime()) / 3600000; i++, k++) {
+                                    var point1 = new Point(new Date(_this.logDateOFrom.getFullYear(), _this.logDateOFrom.getMonth(), _this.logDateOFrom.getDate(), k, 0, 1), 0);
+                                    gggraph.push(point1);
+                                }
+                                for (var b = 0; b < data.length; b++) {
+                                    if (_this.transactionsByType[a].type == data[b].type) {
+                                        for (var z = 0; z < gggraph.length; z++) {
+                                            if (gggraph[z].x.getHours() == data[b].x) {
+                                                gggraph[z].y = data[b].y;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                                _this.dataSet1.push(new DataSet(_this.transactionsByType[a].type, _this.colors[a], false, gggraph));
+                            }
+                            _this.dataSetf = _this.dataSet.concat(_this.dataSet1);
+                            /**
+                           for(var k=this.logDateOFrom.getHours(),i=0;i<(this.logDateOTo.getTime()-this.logDateOFrom.getTime())/3600000;i++,k++){
+                             var point1=new Point(new Date(this.logDateOFrom.getFullYear(),this.logDateOFrom.getMonth(),this.logDateOFrom.getDate(),k,0,1),0);
+                             var point2=new Point(new Date(this.logDateOFrom.getFullYear(),this.logDateOFrom.getMonth(),this.logDateOFrom.getDate(),k,0,1),0);
+                             var point3=new Point(new Date(this.logDateOFrom.getFullYear(),this.logDateOFrom.getMonth(),this.logDateOFrom.getDate(),k,0,1),0);
+                             this.wtttgraph.push(point1);
+                             this.dtttgraph.push(point2);
+                             this.btttgraph.push(point3);
+                           }
+                           for(var i=0;i<data.length;i++){
+                             for(var z=0;z<this.wtttgraph.length;z++){
+                               if(this.wtttgraph[z].x.getHours()==data[i].x){
+                                 //this.totalt[z].y=this.ttgraph[i].y;
+                                 if(data[i].type=="Withdrawl"){
+                                   this.wtttgraph[z].y=data[i].y;
+                                 }
+                                 else if(data[i].type=="Deposit"){
+                                   this.dtttgraph[z].y=data[i].y;
+                                 }
+                                 else{
+                                   this.btttgraph[z].y=data[i].y;
+                                 }
+                                 break;
+                               }
+                             }
+                           }
+                           this.dataSet.push(new DataSet("Withdrawls","#8e5ea2",false,this.wtttgraph));
+                           
+                           this.dataSet.push(new DataSet("Deposits","#3cba9f",false,this.dtttgraph));
+                           
+                           this.dataSet.push(new DataSet("Bill Payments","#e8c3b9",false,this.btttgraph));
+                           */
+                        });
                     });
                     _this.logService.getTransactionTypeGraph(currentLog).subscribe(function (data) {
                         _this.wtttgraph = [];
