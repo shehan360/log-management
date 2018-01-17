@@ -70,6 +70,43 @@ module.exports.getLogNamesByDate = function(date,callback){
   Log.aggregate(query,callback);
 }
 
+
+module.exports.getLogNamesByUploadDate = function(date,callback){
+  var qdate=new Date(date+"T00:00:00+05:30");
+  var query=  [
+    {
+      $project:{
+          "upB":{$add:[qdate,86400000]},
+          "dateUploaded":1,
+          "logName":1
+      }
+  },
+  {
+  $match: {
+           "dateUploaded":{ $gte : qdate },
+          }
+  },
+  {
+      $project:{
+          "_id":0,
+          "logName":1,
+          "test":{$lt:["$dateUploaded","$upB"]}
+      }
+  },
+  {
+  $match: {
+           "test":true
+          }
+  },
+  {
+      $project:{
+          "logName":1
+      }
+  }
+  ];
+  Log.aggregate(query,callback);
+}
+
 module.exports.getLogNamesByLocationDate = function(date,location,callback){
   var qdate=new Date(date+"T00:00:00+05:30");
   var query=  [
@@ -438,6 +475,46 @@ module.exports.getNoFailedTransactions = function(logname,callback){
     ];
   Log.aggregate(query,callback);
 }
+
+module.exports.getDownLogNames = function(date,callback){
+  var qdate=new Date(date+"T00:00:00+05:30");
+  var query=  
+  [
+    {
+      $project:{
+          "upB":{$add:[qdate,86400000]},
+          "dateUploaded":1,
+          "logName":1,
+          "events":1
+      }
+  },
+  {
+  $match: {
+           "dateUploaded":{ $gte : qdate },
+           "events.event":"down"
+          }
+  },
+  {
+      $project:{
+          "_id":0,
+          "logName":1,
+          "test":{$lt:["$dateUploaded","$upB"]}
+      }
+  },
+  {
+  $match: {
+           "test":true
+          }
+  },
+  {
+      $project:{
+          "logName":1
+      }
+  }
+  ];
+  Log.aggregate(query,callback);
+}
+
 
 
 

@@ -12,6 +12,7 @@ router.get('/lognames', function (req, res) {
 
 
 router.post('/lognamesbylocation', function (req, res) {
+    
     Log.getLogNamesByLocation(req.body.location,(err, log) => {
         if (err) throw err;
         else
@@ -23,6 +24,16 @@ router.post('/lognamesbydate', function (req, res) {
     Log.getLogNamesByDate(req.body.date,(err, log) => {
         if (err) throw err;
         else
+            res.json(log);
+    });
+});
+
+router.post('/lognamesbyuploaddate', function (req, res) {
+    
+    Log.getLogNamesByUploadDate(req.body.date,(err, log) => {
+        if (err) throw err;
+        else
+            console.log(log)
             res.json(log);
     });
 });
@@ -39,7 +50,17 @@ router.get('/locations', function (req, res) {
     Log.getLocations((err, log) => {
         if (err) throw err;
         else
+            console.log(log)
             res.json({ log });
+    });
+});
+
+router.post('/downlognames', function (req, res) {
+    Log.getDownLogNames(req.body.date,(err, log) => {
+        if (err) throw err;
+        else
+            console.log(log);
+            res.json( log );
     });
 });
 
@@ -94,6 +115,7 @@ router.post('/updown',function(req,res){
 
 router.post('/loginfo',function(req,res){
     Log.getLogInfo(req.body.logName,(err,log)=>{
+       
         if (err) throw err;
         else              
             res.json(log);

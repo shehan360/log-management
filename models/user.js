@@ -17,6 +17,18 @@ const UserSchema = mongoose.Schema({
     password:{
         type: String,
         required: true
+    },
+    usertype:{
+        type: String,
+        required: true
+    },
+    requestusertype:{
+        type: String,
+        required: true
+    },
+    approved:{
+        type: String,
+        required: true
     }
 });
 
@@ -30,6 +42,66 @@ module.exports.getUserByUsername = function (username,callback){
     const query = {username:username}
     User.findOne(query,callback);
 }
+
+module.exports.approveUser = function (username,usertype,callback){
+    const query = {"username":username};
+    User.update(query,{"approved":"1","usertype":usertype},callback);
+}
+
+module.exports.resetPassword = function (username,password,callback){
+    const query = {"username":username};
+
+    bcrypt.genSalt(10, (err,salt)=>{
+        bcrypt.hash(password,salt,(err,hash)=>{
+            if(err) throw err;
+            User.update(query,{"password":hash},callback);
+        });
+    });
+    
+}
+
+module.exports.removeUser = function (username,callback){
+    const query = {"username":username};
+    User.findOne(query).remove(callback);
+}
+
+module.exports.getUnApprovedUsers = function (callback){
+    var query=  [{
+        $match: {
+                 "approved":"0"
+                }
+        },{
+            $project:{
+                "_id":0,
+                "name":1,
+                "email":1,
+                "username":1,
+                "usertype":1,
+                "requestusertype":1
+            }
+        }];
+      User.aggregate(query,callback);
+}
+
+module.exports.getApprovedUsers = function (callback){
+    var query=  [{
+        $match: {
+                 "approved":"1",
+                 "usertype":"user"
+                }
+        },{
+            $project:{
+                "_id":0,
+                "name":1,
+                "email":1,
+                "username":1,
+                "usertype":1,
+                "requestusertype":1
+            }
+        }];
+      User.aggregate(query,callback);
+}
+
 
 module.exports.addUser = function(newUser,callback){
     bcrypt.genSalt(10, (err,salt)=>{
