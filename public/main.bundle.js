@@ -577,6 +577,7 @@ var ErrorsViewComponent = /** @class */ (function () {
             _this.yLabels2 = [];
             _this.yLabels3 = [];
             _this.allErrors = [];
+            _this.allErrorsf = [];
             _this.allErrors2 = [];
             _this.allErrors3 = [];
             _this.tedataset = [];
@@ -605,33 +606,33 @@ var ErrorsViewComponent = /** @class */ (function () {
                         _this.yLabels.push(_this.technicalTransactionErrors[i].transactions.error.desc);
                     }
                 }
-            });
-            _this.logService.getOtherTechnicalErrors(currentLog).subscribe(function (data) {
-                _this.otherTechnicalErrors = data;
-                for (var i = 0; i < _this.otherTechnicalErrors.length; i++) {
-                    _this.otherTechnicalErrors[i].errors.time = new Date(_this.otherTechnicalErrors[i].errors.time);
-                    _this.allErrors3.push(new Error(_this.otherTechnicalErrors[i].errors.errorName, new Date(_this.otherTechnicalErrors[i].errors.time), "other"));
-                    if (_this.yLabels.indexOf(_this.otherTechnicalErrors[i].errors.errorName) == -1) {
-                        _this.yLabels2.push(_this.otherTechnicalErrors[i].errors.errorName);
+                _this.logService.getOtherTechnicalErrors(currentLog).subscribe(function (data) {
+                    _this.otherTechnicalErrors = data;
+                    for (var i = 0; i < _this.otherTechnicalErrors.length; i++) {
+                        _this.otherTechnicalErrors[i].errors.time = new Date(_this.otherTechnicalErrors[i].errors.time);
+                        _this.allErrors3.push(new Error(_this.otherTechnicalErrors[i].errors.errorName, new Date(_this.otherTechnicalErrors[i].errors.time), "other"));
+                        if (_this.yLabels.indexOf(_this.otherTechnicalErrors[i].errors.errorName) == -1) {
+                            _this.yLabels2.push(_this.otherTechnicalErrors[i].errors.errorName);
+                        }
                     }
-                }
-                _this.allErrors = _this.allErrors.concat(_this.allErrors2, _this.allErrors3);
-                _this.allErrors.sort(function (a, b) {
-                    return a.time.getTime() - b.time.getTime();
+                    _this.allErrorsf = _this.allErrors.concat(_this.allErrors2, _this.allErrors3);
+                    _this.allErrorsf.sort(function (a, b) {
+                        return a.time.getTime() - b.time.getTime();
+                    });
+                    for (var i = 0; i < _this.allErrorsf.length; i++) {
+                        _this.allErrorTimes.push(_this.allErrorsf[i].time.toTimeString());
+                        if (_this.allErrorsf[i].type == "transaction") {
+                            _this.tedataset.push(_this.allErrorsf[i].name);
+                            _this.oedataset.push(null);
+                        }
+                        else {
+                            _this.oedataset.push(_this.allErrors[i].name);
+                            _this.tedataset.push(null);
+                        }
+                    }
+                    _this.yLabels2.push(" ");
+                    _this.yLabels3 = _this.yLabels.concat(_this.yLabels2);
                 });
-                for (var i = 0; i < _this.allErrors.length; i++) {
-                    _this.allErrorTimes.push(_this.allErrors[i].time.toTimeString());
-                    if (_this.allErrors[i].type == "transaction") {
-                        _this.tedataset.push(_this.allErrors[i].name);
-                        _this.oedataset.push(null);
-                    }
-                    else {
-                        _this.oedataset.push(_this.allErrors[i].name);
-                        _this.tedataset.push(null);
-                    }
-                }
-                _this.yLabels2.push(" ");
-                _this.yLabels3 = _this.yLabels.concat(_this.yLabels2);
             });
             _this.logService.getNoUserErrors(currentLog).subscribe(function (data) {
                 _this.noUserErrors = data[0].count;
