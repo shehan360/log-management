@@ -33,7 +33,7 @@ router.post('/lognamesbyuploaddate', function (req, res) {
     Log.getLogNamesByUploadDate(req.body.date,(err, log) => {
         if (err) throw err;
         else
-            console.log(log)
+            
             res.json(log);
     });
 });
@@ -50,7 +50,7 @@ router.get('/locations', function (req, res) {
     Log.getLocations((err, log) => {
         if (err) throw err;
         else
-            console.log(log)
+           
             res.json({ log });
     });
 });
@@ -59,7 +59,7 @@ router.post('/downlognames', function (req, res) {
     Log.getDownLogNames(req.body.date,(err, log) => {
         if (err) throw err;
         else
-            console.log(log);
+            
             res.json( log );
     });
 });

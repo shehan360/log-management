@@ -355,7 +355,6 @@ var DayViewComponent = /** @class */ (function () {
         var _this = this;
         this.logService.currentLog.subscribe(function (currentLog) {
             _this.selLogName = currentLog;
-            console.log(currentLog);
             _this.logService.getLogInfo(currentLog).subscribe(function (data) {
                 _this.atmId = data[0].atmId;
                 _this.deviceType = data[0].deviceType;
@@ -582,6 +581,7 @@ var ErrorsViewComponent = /** @class */ (function () {
             _this.allErrors3 = [];
             _this.tedataset = [];
             _this.oedataset = [];
+            _this.otherTechnicalErrors = [];
             _this.selLogName = currentLog;
             _this.logService.getLogInfo(currentLog).subscribe(function (data) {
                 _this.logDateOFrom = new Date(data[0].timeValidFrom);
@@ -626,7 +626,7 @@ var ErrorsViewComponent = /** @class */ (function () {
                             _this.oedataset.push(null);
                         }
                         else {
-                            _this.oedataset.push(_this.allErrors[i].name);
+                            _this.oedataset.push(_this.allErrorsf[i].name);
                             _this.tedataset.push(null);
                         }
                     }
@@ -884,21 +884,18 @@ var ManageUsersComponent = /** @class */ (function () {
     ManageUsersComponent.prototype.setApprovedUsers = function () {
         var _this = this;
         this.usersService.getApprovedUsers().subscribe(function (data) {
-            console.log(data);
             _this.approvedUsers = data;
         });
     };
     ManageUsersComponent.prototype.setunApprovedUsers = function () {
         var _this = this;
         this.usersService.getUnApprovedUsers().subscribe(function (data) {
-            console.log(data);
             _this.unApprovedUsers = data;
         });
     };
     ManageUsersComponent.prototype.approveOnClick = function (user) {
         var _this = this;
         this.usersService.approveUser(user).subscribe(function (data) {
-            console.log(data);
             _this.setApprovedUsers();
             _this.setunApprovedUsers();
         });
@@ -906,7 +903,6 @@ var ManageUsersComponent = /** @class */ (function () {
     ManageUsersComponent.prototype.rejectOnClick = function (user) {
         var _this = this;
         this.usersService.removeUser(user).subscribe(function (data) {
-            console.log(data);
             _this.setApprovedUsers();
             _this.setunApprovedUsers();
         });
@@ -1519,11 +1515,7 @@ var LinechartComponent = /** @class */ (function () {
     }
     LinechartComponent.prototype.ngOnChanges = function () {
         if (this.labelY && this.dataSet) {
-            console.log(this.dataSet);
-            console.log(this.dataSet.length);
-            //console.log(this.labelY);
             if (this.dataSet.length > 0) {
-                console.log(this.dataSet.length);
                 this.draw();
             }
         }
@@ -1661,6 +1653,10 @@ var ScatterchartComponent = /** @class */ (function () {
     function ScatterchartComponent() {
     }
     ScatterchartComponent.prototype.ngOnChanges = function () {
+        console.log(this.yLabels);
+        console.log(this.xLabels);
+        console.log(this.dataSet1);
+        console.log(this.dataSet2);
         if (this.yLabels && this.xLabels && this.dataSet1 && this.dataSet2) {
             this.draw();
         }
@@ -1935,7 +1931,6 @@ var TransactionsViewComponent = /** @class */ (function () {
                             _this.dataSet1.push(new DataSet(_this.transactionsByType[a].type, _this.colors[a], false, gggraph));
                         }
                         _this.dataSet = _this.dataSet.concat(_this.dataSet1);
-                        console.log(_this.dataSet);
                         /**
                        for(var k=this.logDateOFrom.getHours(),i=0;i<(this.logDateOTo.getTime()-this.logDateOFrom.getTime())/3600000;i++,k++){
                          var point1=new Point(new Date(this.logDateOFrom.getFullYear(),this.logDateOFrom.getMonth(),this.logDateOFrom.getDate(),k,0,1),0);
