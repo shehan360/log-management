@@ -1787,7 +1787,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/transactions-view/transactions-view.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n  <h1>Transactions</h1>\n  <div class=\"row\">\n    <div class=\"col-md-6\">\n      <h4>Number of successful transactions: {{successTransactions}}</h4>\n      <ul class=\"list-group\">\n        <li class=\"list-group-item\" *ngFor=\"let transactionType of transactionsByType\">{{transactionType.type}}s : {{transactionType.count}}</li>\n      </ul>\n    </div>\n    <div class=\"col-md-6\">\n    </div>  \n  </div>\n  <div class=\"row\">\n    <div class=\"col-md-10\"><app-linechart [dataSet]=\"dataSet\" [labelY]=\"labelY1\"></app-linechart></div>\n  </div>\n  <div class=\"row\">\n  \n</div>\n  <div class=\"row\">\n      <div class=\"col-md-10\">\n        <h4>Total Transaction Value: {{totalTAmount}} </h4>\n        <ul class=\"list-group\">\n          <li class=\"list-group-item\" *ngFor=\"let transactionType of transactionsByType\">{{transactionType.type}}s : {{transactionType.amount}}</li>\n        </ul>\n      </div>\n      <div class=\"col-md-2\">\n   \n      </div>  \n    </div>\n\n    <div class=\"row\">\n        <div class=\"col-md-10 well well-format\">\n            <table class=\"table table-hover\">\n                <thead>\n                  <tr>\n                    <th>Type</th>\n                    <th>Time</th>\n                    <th>Total Value</th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr *ngFor=\"let tValue of tValuesByTime\">\n                    <td>{{tValue.type}}</td>\n                    <td>{{tValue.hour}}:00</td>\n                    <td>{{tValue.total}}</td>\n                  </tr>\n                </tbody>\n            </table>\n        </div>\n        <div class=\"col-md-2\">\n     \n        </div>  \n      </div>\n\n \n  "
+module.exports = "\n  <h1>Transactions</h1>\n  <div class=\"row\">\n    <div class=\"col-md-6\">\n      <h4>Number of successful transactions: {{successTransactions}}</h4>\n      <ul class=\"list-group\">\n        <li class=\"list-group-item\" *ngFor=\"let transactionType of transactionsByType\">{{transactionType.type}}s : {{transactionType.count}}</li>\n      </ul>\n    </div>\n    <div class=\"col-md-6\">\n    </div>  \n  </div>\n  <div class=\"row\">\n    <div class=\"col-md-10\"><app-linechart [dataSet]=\"dataSetf\" [labelY]=\"labelY1\"></app-linechart></div>\n  </div>\n  <div class=\"row\">\n  \n</div>\n  <div class=\"row\">\n      <div class=\"col-md-10\">\n        <h4>Total Transaction Value: {{totalTAmount}} </h4>\n        <ul class=\"list-group\">\n          <li class=\"list-group-item\" *ngFor=\"let transactionType of transactionsByType\">{{transactionType.type}}s : {{transactionType.amount}}</li>\n        </ul>\n      </div>\n      <div class=\"col-md-2\">\n   \n      </div>  \n    </div>\n\n    <div class=\"row\">\n        <div class=\"col-md-10 well well-format\">\n            <table class=\"table table-hover\">\n                <thead>\n                  <tr>\n                    <th>Type</th>\n                    <th>Time</th>\n                    <th>Total Value</th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr *ngFor=\"let tValue of tValuesByTime\">\n                    <td>{{tValue.type}}</td>\n                    <td>{{tValue.hour}}:00</td>\n                    <td>{{tValue.total}}</td>\n                  </tr>\n                </tbody>\n            </table>\n        </div>\n        <div class=\"col-md-2\">\n     \n        </div>  \n      </div>\n\n \n  "
 
 /***/ }),
 
@@ -1868,6 +1868,7 @@ var TransactionsViewComponent = /** @class */ (function () {
             }
         };
         this.dataSet1 = [];
+        this.dataSetf = [];
         this.dataSet = [];
         this.labelY1 = "No of transactions";
         //test1:Array<any>;
@@ -1877,6 +1878,8 @@ var TransactionsViewComponent = /** @class */ (function () {
         var _this = this;
         this.logService.currentLog.subscribe(function (currentLog) {
             _this.dataSet = [];
+            _this.dataSetf = [];
+            _this.dataSet1 = [];
             _this.selLogName = currentLog;
             _this.logService.getLogInfo(currentLog).subscribe(function (data) {
                 _this.logDateOFrom = new Date(data[0].timeValidFrom);
@@ -1930,7 +1933,7 @@ var TransactionsViewComponent = /** @class */ (function () {
                             }
                             _this.dataSet1.push(new DataSet(_this.transactionsByType[a].type, _this.colors[a], false, gggraph));
                         }
-                        _this.dataSet = _this.dataSet.concat(_this.dataSet1);
+                        _this.dataSetf = _this.dataSet.concat(_this.dataSet1);
                         /**
                        for(var k=this.logDateOFrom.getHours(),i=0;i<(this.logDateOTo.getTime()-this.logDateOFrom.getTime())/3600000;i++,k++){
                          var point1=new Point(new Date(this.logDateOFrom.getFullYear(),this.logDateOFrom.getMonth(),this.logDateOFrom.getDate(),k,0,1),0);
