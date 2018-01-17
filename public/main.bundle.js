@@ -526,7 +526,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/errors-view/errors-view.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Errors</h1>\n\n<br>\n<h4>Technical Errors: {{noTechnicalErrors}}</h4>\n<div class=\"wellcol well\">\n<p class=\"lead\"><a data-toggle=\"collapse\" href=\"#collapse1\">During transactions: {{noTechnicalTransactionErrors}} <span class=\"caret\"></span></a></p>\n<div id=\"collapse1\" class=\"collapse\">\n<div class=\"well well-sm well-ex\" *ngFor=\"let terror of technicalTransactionErrors\">\n  <p>Error ID: {{terror.transactions.error.errorId}}</p>\n  <p>Description: {{terror.transactions.error.desc}}</p>\n  <p>Time: {{terror.transactions.time}}</p>\n  <p>Transaction Id: {{terror.transactions.transactionId}}</p>\n  <p>Transaction Type: {{terror.transactions.type}}</p>\n</div>\n</div>\n</div>\n\n<div class=\"well\">\n<p class=\"lead\"><a data-toggle=\"collapse\" href=\"#collapse2\">Other Errrors: {{noTechnicalErrors-noTechnicalTransactionErrors}} <span class=\"caret\"></span></a></p>\n<div id=\"collapse2\" class=\"collapse\">\n<div class=\"well well-sm\" *ngFor=\"let terror of otherTechnicalErrors\">\n  <p>Error ID: {{terror.errors.errorId}}</p>\n  <p>Description: {{terror.errors.errorName}}</p>\n  <p>Time: {{terror.errors.time}}</p>\n</div>\n</div>\n</div>\n<div class=\"col-md-10\">\n<app-scatterchart [yLabels]=\"yLabels\" [xLabels]=\"allErrorTimes\" [dataSet1]=\"tedataset\" [dataSet2]=\"oedataset\"></app-scatterchart>\n</div>\n\n<div class=\"row\">\n    <br>\n    <div class=\"col-md-6\">\n    <h4>Failed transactions due to user errors: {{noUserErrors}}</h4>\n    </div>\n    <div class=\"col-md-6\"></div>\n  </div>\n    <div class=\"row\">\n    <div class=\"col-md-6\"><app-barchart [labels]=\"barLabels\" [data]=\"barData\"></app-barchart></div>\n    </div>\n"
+module.exports = "<h1>Errors</h1>\n\n<br>\n<h4>Technical Errors: {{noTechnicalErrors}}</h4>\n<div class=\"wellcol well\">\n<p class=\"lead\"><a data-toggle=\"collapse\" href=\"#collapse1\">During transactions: {{noTechnicalTransactionErrors}} <span class=\"caret\"></span></a></p>\n<div id=\"collapse1\" class=\"collapse\">\n<div class=\"well well-sm well-ex\" *ngFor=\"let terror of technicalTransactionErrors\">\n  <p>Error ID: {{terror.transactions.error.errorId}}</p>\n  <p>Description: {{terror.transactions.error.desc}}</p>\n  <p>Time: {{terror.transactions.time}}</p>\n  <p>Transaction Id: {{terror.transactions.transactionId}}</p>\n  <p>Transaction Type: {{terror.transactions.type}}</p>\n</div>\n</div>\n</div>\n\n<div class=\"well\">\n<p class=\"lead\"><a data-toggle=\"collapse\" href=\"#collapse2\">Other Errrors: {{noTechnicalErrors-noTechnicalTransactionErrors}} <span class=\"caret\"></span></a></p>\n<div id=\"collapse2\" class=\"collapse\">\n<div class=\"well well-sm\" *ngFor=\"let terror of otherTechnicalErrors\">\n  <p>Error ID: {{terror.errors.errorId}}</p>\n  <p>Description: {{terror.errors.errorName}}</p>\n  <p>Time: {{terror.errors.time}}</p>\n</div>\n</div>\n</div>\n<div class=\"col-md-10\">\n<app-scatterchart [yLabels]=\"yLabels3\" [xLabels]=\"allErrorTimes\" [dataSet1]=\"tedataset\" [dataSet2]=\"oedataset\"></app-scatterchart>\n</div>\n\n<div class=\"row\">\n    <br>\n    <div class=\"col-md-6\">\n    <h4>Failed transactions due to user errors: {{noUserErrors}}</h4>\n    </div>\n    <div class=\"col-md-6\"></div>\n  </div>\n    <div class=\"row\">\n    <div class=\"col-md-6\"><app-barchart [labels]=\"barLabels\" [data]=\"barData\"></app-barchart></div>\n    </div>\n"
 
 /***/ }),
 
@@ -564,6 +564,7 @@ var ErrorsViewComponent = /** @class */ (function () {
         this.logService = logService;
         this.yLabels = [];
         this.yLabels2 = [];
+        this.yLabels3 = [];
         this.tedataset = [];
         this.oedataset = [];
     }
@@ -574,7 +575,10 @@ var ErrorsViewComponent = /** @class */ (function () {
             _this.allErrorTimes = [];
             _this.yLabels = [];
             _this.yLabels2 = [];
+            _this.yLabels3 = [];
             _this.allErrors = [];
+            _this.allErrors2 = [];
+            _this.allErrors3 = [];
             _this.tedataset = [];
             _this.oedataset = [];
             _this.selLogName = currentLog;
@@ -596,7 +600,7 @@ var ErrorsViewComponent = /** @class */ (function () {
                 _this.yLabels.push(" ");
                 for (var i = 0; i < _this.technicalTransactionErrors.length; i++) {
                     _this.technicalTransactionErrors[i].transactions.time = new Date(_this.technicalTransactionErrors[i].transactions.time);
-                    _this.allErrors.push(new Error(_this.technicalTransactionErrors[i].transactions.error.desc, new Date(_this.technicalTransactionErrors[i].transactions.time), "transaction"));
+                    _this.allErrors2.push(new Error(_this.technicalTransactionErrors[i].transactions.error.desc, new Date(_this.technicalTransactionErrors[i].transactions.time), "transaction"));
                     if (_this.yLabels.indexOf(_this.technicalTransactionErrors[i].transactions.error.desc) == -1) {
                         _this.yLabels.push(_this.technicalTransactionErrors[i].transactions.error.desc);
                     }
@@ -606,11 +610,12 @@ var ErrorsViewComponent = /** @class */ (function () {
                 _this.otherTechnicalErrors = data;
                 for (var i = 0; i < _this.otherTechnicalErrors.length; i++) {
                     _this.otherTechnicalErrors[i].errors.time = new Date(_this.otherTechnicalErrors[i].errors.time);
-                    _this.allErrors.push(new Error(_this.otherTechnicalErrors[i].errors.errorName, new Date(_this.otherTechnicalErrors[i].errors.time), "other"));
+                    _this.allErrors3.push(new Error(_this.otherTechnicalErrors[i].errors.errorName, new Date(_this.otherTechnicalErrors[i].errors.time), "other"));
                     if (_this.yLabels.indexOf(_this.otherTechnicalErrors[i].errors.errorName) == -1) {
                         _this.yLabels2.push(_this.otherTechnicalErrors[i].errors.errorName);
                     }
                 }
+                _this.allErrors = _this.allErrors.concat(_this.allErrors2, _this.allErrors3);
                 _this.allErrors.sort(function (a, b) {
                     return a.time.getTime() - b.time.getTime();
                 });
@@ -626,7 +631,7 @@ var ErrorsViewComponent = /** @class */ (function () {
                     }
                 }
                 _this.yLabels2.push(" ");
-                _this.yLabels = _this.yLabels.concat(_this.yLabels2);
+                _this.yLabels3 = _this.yLabels.concat(_this.yLabels2);
             });
             _this.logService.getNoUserErrors(currentLog).subscribe(function (data) {
                 _this.noUserErrors = data[0].count;
