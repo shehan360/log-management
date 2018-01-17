@@ -1515,7 +1515,7 @@ var LinechartComponent = /** @class */ (function () {
     }
     LinechartComponent.prototype.ngOnChanges = function () {
         if (this.labelY && this.dataSet) {
-            if (this.dataSet.length > 0) {
+            if (this.dataSet.length > 1) {
                 this.draw();
             }
         }
