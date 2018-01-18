@@ -79,9 +79,6 @@ require('./config/passport')(passport);
 app.use('/users', users);
 app.use('/logdata', logdata);
 
-app.get('/', (req, res) => {
-    res.send('!');
-});
 
 app.get('*', function(req, res) {
     res.sendfile('./server/views/index.html')
