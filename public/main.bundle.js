@@ -848,7 +848,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/manage-users/manage-users.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Manage Users</h1>\n<br>\n<h4>Un-Approved Users</h4>\n<div class=\"row\">\n  <div class=\"col-md-10 well well-format\">\n      <table class=\"table table-hover\">\n          <thead>\n            <tr>\n              <th>Username</th>\n              <th>Email</th>\n              <th>Name</th>\n              <th>Requested Level</th>\n\n              <th>Approval</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr *ngFor=\"let user of unApprovedUsers\">\n              <td>{{user.username}}</td>\n              <td>{{user.email}}:00</td>\n              <td>{{user.name}}</td>\n              \n              <td>{{user.requestusertype}}</td>\n              <td><button class=\"btn-success\" (click)=\"approveOnClick(user)\">Approve</button>\n                <button class=\"btn-warning\" (click)=\"rejectOnClick(user)\">Reject</button>\n              </td>\n            </tr>\n          </tbody>\n      </table>\n  </div>\n  <div class=\"col-md-2\">\n\n  </div>  \n</div>\n\n<h4>Approved Users</h4>\n\n<div class=\"row\">\n  <div class=\"col-md-10 well well-format\">\n      <table class=\"table table-hover\">\n          <thead>\n            <tr>\n              <th>Username</th>\n              <th>Email</th>\n              <th>Name</th>\n              <th>User Type</th>\n\n              <th>Reset Password: pass123</th>\n              <th>Delete User</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr *ngFor=\"let user of approvedUsers\">\n              <td>{{user.username}}</td>\n              <td>{{user.email}}:00</td>\n              <td>{{user.name}}</td>\n              \n              <td>{{user.usertype}}</td>\n              <td>\n                <button class=\"btn-warning\" (click)=\"resetPasswordOnClick(user)\">Reset</button>\n              </td>\n              <td>\n                <button class=\"btn-warning\" (click)=\"rejectOnClick(user)\">Delete</button>\n              </td>\n            </tr>\n          </tbody>\n      </table>\n  </div>\n  <div class=\"col-md-2\">\n\n  </div>  \n</div>"
+module.exports = "<h1>Manage Users</h1>\n<br>\n<h4>Un-Approved Users</h4>\n<div class=\"row\">\n  <div class=\"col-md-10 well well-format\">\n      <table class=\"table table-hover\">\n          <thead>\n            <tr>\n              <th>Username</th>\n              <th>Email</th>\n              <th>Name</th>\n              <th>Requested Level</th>\n\n              <th>Approval</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr *ngFor=\"let user of unApprovedUsers\">\n              <td>{{user.username}}</td>\n              <td>{{user.email}}</td>\n              <td>{{user.name}}</td>\n              \n              <td>{{user.requestusertype}}</td>\n              <td><button class=\"btn-success\" (click)=\"approveOnClick(user)\">Approve</button>\n                <button class=\"btn-warning\" (click)=\"rejectOnClick(user)\">Reject</button>\n              </td>\n            </tr>\n          </tbody>\n      </table>\n  </div>\n  <div class=\"col-md-2\">\n\n  </div>  \n</div>\n\n<h4>Approved Users</h4>\n\n<div class=\"row\">\n  <div class=\"col-md-10 well well-format\">\n      <table class=\"table table-hover\">\n          <thead>\n            <tr>\n              <th>Username</th>\n              <th>Email</th>\n              <th>Name</th>\n              <th>User Type</th>\n\n              <th>Reset Password: pass123</th>\n              <th>Delete User</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr *ngFor=\"let user of approvedUsers\">\n              <td>{{user.username}}</td>\n              <td>{{user.email}}:00</td>\n              <td>{{user.name}}</td>\n              \n              <td>{{user.usertype}}</td>\n              <td>\n                <button class=\"btn-warning\" (click)=\"resetPasswordOnClick(user)\">Reset</button>\n              </td>\n              <td>\n                <button class=\"btn-warning\" (click)=\"rejectOnClick(user)\">Delete</button>\n              </td>\n            </tr>\n          </tbody>\n      </table>\n  </div>\n  <div class=\"col-md-2\">\n\n  </div>  \n</div>"
 
 /***/ }),
 
@@ -860,6 +860,8 @@ module.exports = "<h1>Manage Users</h1>\n<br>\n<h4>Un-Approved Users</h4>\n<div 
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_users_service__ = __webpack_require__("../../../../../src/app/services/users.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -872,10 +874,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var ManageUsersComponent = /** @class */ (function () {
-    function ManageUsersComponent(authService, usersService) {
+    function ManageUsersComponent(authService, usersService, flashMessagesService) {
         this.authService = authService;
         this.usersService = usersService;
+        this.flashMessagesService = flashMessagesService;
     }
     ManageUsersComponent.prototype.ngOnInit = function () {
         this.setApprovedUsers();
@@ -896,6 +900,10 @@ var ManageUsersComponent = /** @class */ (function () {
     ManageUsersComponent.prototype.approveOnClick = function (user) {
         var _this = this;
         this.usersService.approveUser(user).subscribe(function (data) {
+            if (data.success)
+                _this.flashMessagesService.show(data.msg, { cssClass: 'alert-success', timeout: 5000 });
+            else
+                _this.flashMessagesService.show(data.msg, { cssClass: 'alert-danger', timeout: 5000 });
             _this.setApprovedUsers();
             _this.setunApprovedUsers();
         });
@@ -903,13 +911,21 @@ var ManageUsersComponent = /** @class */ (function () {
     ManageUsersComponent.prototype.rejectOnClick = function (user) {
         var _this = this;
         this.usersService.removeUser(user).subscribe(function (data) {
+            if (data.success)
+                _this.flashMessagesService.show(data.msg, { cssClass: 'alert-success', timeout: 5000 });
+            else
+                _this.flashMessagesService.show(data.msg, { cssClass: 'alert-danger', timeout: 5000 });
             _this.setApprovedUsers();
             _this.setunApprovedUsers();
         });
     };
     ManageUsersComponent.prototype.resetPasswordOnClick = function (user) {
+        var _this = this;
         this.usersService.resetPassword(user.username, "pass123").subscribe(function (data) {
-            console.log(data);
+            if (data.success)
+                _this.flashMessagesService.show(data.msg, { cssClass: 'alert-success', timeout: 5000 });
+            else
+                _this.flashMessagesService.show(data.msg, { cssClass: 'alert-danger', timeout: 5000 });
         });
     };
     ManageUsersComponent = __decorate([
@@ -918,10 +934,10 @@ var ManageUsersComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/components/manage-users/manage-users.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/manage-users/manage-users.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_users_service__["a" /* UsersService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_users_service__["a" /* UsersService */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_users_service__["a" /* UsersService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_users_service__["a" /* UsersService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object])
     ], ManageUsersComponent);
     return ManageUsersComponent;
-    var _a, _b;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=manage-users.component.js.map

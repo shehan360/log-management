@@ -104,7 +104,7 @@ router.post('/deleteuser', passport.authenticate('jwt', { session: false }), (re
     User.removeUser(username,(err,user)=>{
         if (user.result.n==1) {
             
-            return res.json({ success: true, msg: 'Deleted!' });
+            return res.json({ success: true, msg: 'User removed' });
         }
         else {
             return res.json({ success: false, msg: 'Error in deleting' });
@@ -120,7 +120,7 @@ router.post('/approveuser',passport.authenticate('jwt', { session: false }), (re
     User.approveUser(username,usertype, (err, user) => {
         if (user) {
             
-            return res.json({ success: true, msg: 'Approved!' });
+            return res.json({ success: true, msg: 'Approved User' });
         }
         else {
             return res.json({ success: false, msg: 'Error in approving' });
@@ -138,7 +138,7 @@ router.post('/resetpassword',passport.authenticate('jwt', { session: false }), (
             return res.json({ success: true, msg: 'Password Resetted!' });
         }
         else {
-            return res.json({ success: false, msg: 'Error in resetting' });
+            return res.json({ success: false, msg: 'Error in resetting password' });
         }
     });
 });
