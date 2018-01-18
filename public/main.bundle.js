@@ -1514,8 +1514,9 @@ var LinechartComponent = /** @class */ (function () {
     function LinechartComponent() {
     }
     LinechartComponent.prototype.ngOnChanges = function () {
+        console.log(this.dataSet);
         if (this.labelY && this.dataSet) {
-            if (this.dataSet.length > 1) {
+            if (this.dataSet.length) {
                 this.draw();
             }
         }
@@ -1653,10 +1654,6 @@ var ScatterchartComponent = /** @class */ (function () {
     function ScatterchartComponent() {
     }
     ScatterchartComponent.prototype.ngOnChanges = function () {
-        console.log(this.yLabels);
-        console.log(this.xLabels);
-        console.log(this.dataSet1);
-        console.log(this.dataSet2);
         if (this.yLabels && this.xLabels && this.dataSet1 && this.dataSet2) {
             this.draw();
         }
