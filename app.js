@@ -83,6 +83,10 @@ app.get('/', (req, res) => {
     res.send('!');
 });
 
+app.get('*', function(req, res) {
+    res.sendfile('./server/views/index.html')
+})
+
 app.listen(port, function () {
     console.log('Server started!' + port);
 });

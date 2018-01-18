@@ -72,46 +72,35 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_d3_ng2_service__ = __webpack_require__("../../../../d3-ng2-service/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ng2_charts__ = __webpack_require__("../../../../ng2-charts/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ng2_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_ng2_charts__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_navbar_navbar_component__ = __webpack_require__("../../../../../src/app/components/navbar/navbar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_login_login_component__ = __webpack_require__("../../../../../src/app/components/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_register_register_component__ = __webpack_require__("../../../../../src/app/components/register/register.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_home_home_component__ = __webpack_require__("../../../../../src/app/components/home/home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_profile_profile_component__ = __webpack_require__("../../../../../src/app/components/profile/profile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_validate_service__ = __webpack_require__("../../../../../src/app/services/validate.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_log_service__ = __webpack_require__("../../../../../src/app/services/log.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__services_users_service__ = __webpack_require__("../../../../../src/app/services/users.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17_angular2_flash_messages__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__guards_adminauth_guard__ = __webpack_require__("../../../../../src/app/guards/adminauth.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__ = __webpack_require__("../../../../../src/app/guards/auth.guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_day_view_day_view_component__ = __webpack_require__("../../../../../src/app/components/day-view/day-view.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_detailed_view_detailed_view_component__ = __webpack_require__("../../../../../src/app/components/detailed-view/detailed-view.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_critical_errors_view_critical_errors_view_component__ = __webpack_require__("../../../../../src/app/components/critical-errors-view/critical-errors-view.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__layouts_dash_layout_dash_component__ = __webpack_require__("../../../../../src/app/layouts/dash-layout/dash.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__layouts_auth_layout_auth_component__ = __webpack_require__("../../../../../src/app/layouts/auth-layout/auth.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_shared_linechart_linechart_component__ = __webpack_require__("../../../../../src/app/components/shared/linechart/linechart.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_transactions_view_transactions_view_component__ = __webpack_require__("../../../../../src/app/components/transactions-view/transactions-view.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_shared_barchart_barchart_component__ = __webpack_require__("../../../../../src/app/components/shared/barchart/barchart.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_errors_view_errors_view_component__ = __webpack_require__("../../../../../src/app/components/errors-view/errors-view.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_shared_scatterchart_scatterchart_component__ = __webpack_require__("../../../../../src/app/components/shared/scatterchart/scatterchart.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_shared_google_chart_google_chart_component__ = __webpack_require__("../../../../../src/app/components/shared/google-chart/google-chart.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_manage_users_manage_users_component__ = __webpack_require__("../../../../../src/app/components/manage-users/manage-users.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_navbar_navbar_component__ = __webpack_require__("../../../../../src/app/components/navbar/navbar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_login_login_component__ = __webpack_require__("../../../../../src/app/components/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_register_register_component__ = __webpack_require__("../../../../../src/app/components/register/register.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_home_home_component__ = __webpack_require__("../../../../../src/app/components/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_profile_profile_component__ = __webpack_require__("../../../../../src/app/components/profile/profile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_validate_service__ = __webpack_require__("../../../../../src/app/services/validate.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_log_service__ = __webpack_require__("../../../../../src/app/services/log.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_users_service__ = __webpack_require__("../../../../../src/app/services/users.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_angular2_flash_messages__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__guards_adminauth_guard__ = __webpack_require__("../../../../../src/app/guards/adminauth.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__guards_auth_guard__ = __webpack_require__("../../../../../src/app/guards/auth.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_day_view_day_view_component__ = __webpack_require__("../../../../../src/app/components/day-view/day-view.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__layouts_dash_layout_dash_component__ = __webpack_require__("../../../../../src/app/layouts/dash-layout/dash.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__layouts_auth_layout_auth_component__ = __webpack_require__("../../../../../src/app/layouts/auth-layout/auth.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_shared_linechart_linechart_component__ = __webpack_require__("../../../../../src/app/components/shared/linechart/linechart.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_transactions_view_transactions_view_component__ = __webpack_require__("../../../../../src/app/components/transactions-view/transactions-view.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_shared_barchart_barchart_component__ = __webpack_require__("../../../../../src/app/components/shared/barchart/barchart.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_errors_view_errors_view_component__ = __webpack_require__("../../../../../src/app/components/errors-view/errors-view.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_shared_scatterchart_scatterchart_component__ = __webpack_require__("../../../../../src/app/components/shared/scatterchart/scatterchart.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_manage_users_manage_users_component__ = __webpack_require__("../../../../../src/app/components/manage-users/manage-users.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
-
-
-
-
 
 
 
@@ -142,23 +131,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var appRoutes = [
     {
         path: '',
-        component: __WEBPACK_IMPORTED_MODULE_24__layouts_auth_layout_auth_component__["a" /* AuthComponent */],
+        component: __WEBPACK_IMPORTED_MODULE_20__layouts_auth_layout_auth_component__["a" /* AuthComponent */],
         children: [
-            { path: '', component: __WEBPACK_IMPORTED_MODULE_11__components_home_home_component__["a" /* HomeComponent */] },
-            { path: 'register', component: __WEBPACK_IMPORTED_MODULE_10__components_register_register_component__["a" /* RegisterComponent */] },
-            { path: 'home', component: __WEBPACK_IMPORTED_MODULE_11__components_home_home_component__["a" /* HomeComponent */] },
-            { path: 'login', component: __WEBPACK_IMPORTED_MODULE_9__components_login_login_component__["a" /* LoginComponent */] }
+            { path: '', component: __WEBPACK_IMPORTED_MODULE_9__components_home_home_component__["a" /* HomeComponent */] },
+            { path: 'register', component: __WEBPACK_IMPORTED_MODULE_8__components_register_register_component__["a" /* RegisterComponent */] },
+            { path: 'home', component: __WEBPACK_IMPORTED_MODULE_9__components_home_home_component__["a" /* HomeComponent */] },
+            { path: 'login', component: __WEBPACK_IMPORTED_MODULE_7__components_login_login_component__["a" /* LoginComponent */] }
         ]
     },
     {
         path: '',
-        component: __WEBPACK_IMPORTED_MODULE_23__layouts_dash_layout_dash_component__["a" /* DashComponent */],
+        component: __WEBPACK_IMPORTED_MODULE_19__layouts_dash_layout_dash_component__["a" /* DashComponent */],
         children: [
-            { path: 'summary', component: __WEBPACK_IMPORTED_MODULE_20__components_day_view_day_view_component__["a" /* DayViewComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */]] },
-            { path: 'transactionsview', component: __WEBPACK_IMPORTED_MODULE_26__components_transactions_view_transactions_view_component__["a" /* TransactionsViewComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */]] },
-            { path: 'errorsview', component: __WEBPACK_IMPORTED_MODULE_28__components_errors_view_errors_view_component__["a" /* ErrorsViewComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */]] },
-            { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_12__components_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */]] },
-            { path: 'manageusers', component: __WEBPACK_IMPORTED_MODULE_31__components_manage_users_manage_users_component__["a" /* ManageUsersComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_18__guards_adminauth_guard__["a" /* AdminauthGuard */]] },
+            { path: 'summary', component: __WEBPACK_IMPORTED_MODULE_18__components_day_view_day_view_component__["a" /* DayViewComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_17__guards_auth_guard__["a" /* AuthGuard */]] },
+            { path: 'transactionsview', component: __WEBPACK_IMPORTED_MODULE_22__components_transactions_view_transactions_view_component__["a" /* TransactionsViewComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_17__guards_auth_guard__["a" /* AuthGuard */]] },
+            { path: 'errorsview', component: __WEBPACK_IMPORTED_MODULE_24__components_errors_view_errors_view_component__["a" /* ErrorsViewComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_17__guards_auth_guard__["a" /* AuthGuard */]] },
+            { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_10__components_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_17__guards_auth_guard__["a" /* AuthGuard */]] },
+            { path: 'manageusers', component: __WEBPACK_IMPORTED_MODULE_26__components_manage_users_manage_users_component__["a" /* ManageUsersComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_16__guards_adminauth_guard__["a" /* AdminauthGuard */]] },
         ]
     }
 ];
@@ -179,102 +168,37 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_8__components_navbar_navbar_component__["a" /* NavbarComponent */],
-                __WEBPACK_IMPORTED_MODULE_9__components_login_login_component__["a" /* LoginComponent */],
-                __WEBPACK_IMPORTED_MODULE_10__components_register_register_component__["a" /* RegisterComponent */],
-                __WEBPACK_IMPORTED_MODULE_11__components_home_home_component__["a" /* HomeComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__components_profile_profile_component__["a" /* ProfileComponent */],
-                __WEBPACK_IMPORTED_MODULE_20__components_day_view_day_view_component__["a" /* DayViewComponent */],
-                __WEBPACK_IMPORTED_MODULE_21__components_detailed_view_detailed_view_component__["a" /* DetailedViewComponent */],
-                __WEBPACK_IMPORTED_MODULE_22__components_critical_errors_view_critical_errors_view_component__["a" /* CriticalErrorsViewComponent */],
-                __WEBPACK_IMPORTED_MODULE_23__layouts_dash_layout_dash_component__["a" /* DashComponent */],
-                __WEBPACK_IMPORTED_MODULE_24__layouts_auth_layout_auth_component__["a" /* AuthComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components_shared_linechart_linechart_component__["a" /* LinechartComponent */],
-                __WEBPACK_IMPORTED_MODULE_26__components_transactions_view_transactions_view_component__["a" /* TransactionsViewComponent */],
-                __WEBPACK_IMPORTED_MODULE_27__components_shared_barchart_barchart_component__["a" /* BarchartComponent */],
-                __WEBPACK_IMPORTED_MODULE_28__components_errors_view_errors_view_component__["a" /* ErrorsViewComponent */],
-                __WEBPACK_IMPORTED_MODULE_29__components_shared_scatterchart_scatterchart_component__["a" /* ScatterchartComponent */],
-                __WEBPACK_IMPORTED_MODULE_30__components_shared_google_chart_google_chart_component__["a" /* GoogleChartComponent */],
-                __WEBPACK_IMPORTED_MODULE_31__components_manage_users_manage_users_component__["a" /* ManageUsersComponent */],
+                __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_6__components_navbar_navbar_component__["a" /* NavbarComponent */],
+                __WEBPACK_IMPORTED_MODULE_7__components_login_login_component__["a" /* LoginComponent */],
+                __WEBPACK_IMPORTED_MODULE_8__components_register_register_component__["a" /* RegisterComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__components_home_home_component__["a" /* HomeComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__components_profile_profile_component__["a" /* ProfileComponent */],
+                __WEBPACK_IMPORTED_MODULE_18__components_day_view_day_view_component__["a" /* DayViewComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__layouts_dash_layout_dash_component__["a" /* DashComponent */],
+                __WEBPACK_IMPORTED_MODULE_20__layouts_auth_layout_auth_component__["a" /* AuthComponent */],
+                __WEBPACK_IMPORTED_MODULE_21__components_shared_linechart_linechart_component__["a" /* LinechartComponent */],
+                __WEBPACK_IMPORTED_MODULE_22__components_transactions_view_transactions_view_component__["a" /* TransactionsViewComponent */],
+                __WEBPACK_IMPORTED_MODULE_23__components_shared_barchart_barchart_component__["a" /* BarchartComponent */],
+                __WEBPACK_IMPORTED_MODULE_24__components_errors_view_errors_view_component__["a" /* ErrorsViewComponent */],
+                __WEBPACK_IMPORTED_MODULE_25__components_shared_scatterchart_scatterchart_component__["a" /* ScatterchartComponent */],
+                __WEBPACK_IMPORTED_MODULE_26__components_manage_users_manage_users_component__["a" /* ManageUsersComponent */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_http__["HttpModule"],
                 __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* RouterModule */].forRoot(appRoutes),
-                __WEBPACK_IMPORTED_MODULE_17_angular2_flash_messages__["FlashMessagesModule"],
-                __WEBPACK_IMPORTED_MODULE_6_ng2_charts__["ChartsModule"]
+                __WEBPACK_IMPORTED_MODULE_15_angular2_flash_messages__["FlashMessagesModule"]
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_13__services_validate_service__["a" /* ValidateService */], __WEBPACK_IMPORTED_MODULE_14__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_18__guards_adminauth_guard__["a" /* AdminauthGuard */], __WEBPACK_IMPORTED_MODULE_15__services_log_service__["a" /* LogService */], __WEBPACK_IMPORTED_MODULE_5_d3_ng2_service__["a" /* D3Service */], __WEBPACK_IMPORTED_MODULE_16__services_users_service__["a" /* UsersService */]],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_11__services_validate_service__["a" /* ValidateService */], __WEBPACK_IMPORTED_MODULE_12__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_17__guards_auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_16__guards_adminauth_guard__["a" /* AdminauthGuard */], __WEBPACK_IMPORTED_MODULE_13__services_log_service__["a" /* LogService */], __WEBPACK_IMPORTED_MODULE_14__services_users_service__["a" /* UsersService */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
     return AppModule;
 }());
 
 //# sourceMappingURL=app.module.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/critical-errors-view/critical-errors-view.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/critical-errors-view/critical-errors-view.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "    <div class= \"col-md-10\">\n        <h1>Critical Errors</h1>\n    </div>"
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/critical-errors-view/critical-errors-view.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CriticalErrorsViewComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var CriticalErrorsViewComponent = /** @class */ (function () {
-    function CriticalErrorsViewComponent() {
-    }
-    CriticalErrorsViewComponent.prototype.ngOnInit = function () {
-    };
-    CriticalErrorsViewComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'app-critical-errors-view',
-            template: __webpack_require__("../../../../../src/app/components/critical-errors-view/critical-errors-view.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/components/critical-errors-view/critical-errors-view.component.css")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], CriticalErrorsViewComponent);
-    return CriticalErrorsViewComponent;
-}());
-
-//# sourceMappingURL=critical-errors-view.component.js.map
 
 /***/ }),
 
@@ -440,67 +364,6 @@ var DayViewComponent = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=day-view.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/detailed-view/detailed-view.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/detailed-view/detailed-view.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "\n    <div class= \"col-md-10 \">\n      <h1>Detailed Views</h1>\n      \n    </div>\n    <div id=\"map\"></div>\n    <script src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyCKUX_Fp_PWDJiaAEza19y3l_fe-j0jdKY&callback=initMap\"\n    async defer></script>"
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/detailed-view/detailed-view.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DetailedViewComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var DetailedViewComponent = /** @class */ (function () {
-    function DetailedViewComponent() {
-    }
-    DetailedViewComponent.prototype.ngOnInit = function () {
-    };
-    DetailedViewComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'app-detailed-view',
-            template: __webpack_require__("../../../../../src/app/components/detailed-view/detailed-view.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/components/detailed-view/detailed-view.component.css")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], DetailedViewComponent);
-    return DetailedViewComponent;
-}());
-
-//# sourceMappingURL=detailed-view.component.js.map
 
 /***/ }),
 
@@ -1383,102 +1246,6 @@ var BarchartComponent = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=barchart.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/shared/google-chart/google-chart.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/shared/google-chart/google-chart.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  google-chart works!\n</p>\n"
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/shared/google-chart/google-chart.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GoogleChartComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var GoogleChartComponent = /** @class */ (function () {
-    function GoogleChartComponent(element) {
-        this.element = element;
-        this.pie_ChartOptions = {
-            title: 'My Daily Activities',
-            width: 900,
-            height: 500
-        };
-        this._element = this.element.nativeElement;
-    }
-    GoogleChartComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        setTimeout(function () {
-            google.charts.load('current', { 'packages': ['corechart'] });
-            setTimeout(function () {
-                _this.drawGraph(_this.chartData, _this._element);
-            }, 1000);
-        }, 1000);
-    };
-    GoogleChartComponent.prototype.drawGraph = function (chartData, ele) {
-        google.charts.setOnLoadCallback(drawChart);
-        function drawChart() {
-            var wrapper;
-            wrapper = new google.visualization.ChartWrapper({
-                chartType: "LineChart",
-                dataTable: chartData,
-                options: this.pie_ChartOptions || {},
-                containerId: ele.id
-            });
-            wrapper.draw();
-        }
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])('chartData'),
-        __metadata("design:type", Object)
-    ], GoogleChartComponent.prototype, "chartData", void 0);
-    GoogleChartComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"])({
-            selector: '[GoogleChart]'
-        }),
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'app-google-chart',
-            template: __webpack_require__("../../../../../src/app/components/shared/google-chart/google-chart.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/components/shared/google-chart/google-chart.component.css")]
-        }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _a || Object])
-    ], GoogleChartComponent);
-    return GoogleChartComponent;
-    var _a;
-}());
-
-//# sourceMappingURL=google-chart.component.js.map
 
 /***/ }),
 
