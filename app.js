@@ -78,12 +78,11 @@ require('./config/passport')(passport);
 
 app.use('/users', users);
 app.use('/logdata', logdata);
-app.use(express.static(__dirname + '/server'));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/dist'));
 
-app.get('*', function(req, res) {
-    res.sendfile('./server/views/index.html')
-})
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname + '/dist/index.html'));
+});
 /*
 app.get('/', (req, res) => {
     res.send('!');
