@@ -75,8 +75,8 @@ app.post('/notificationsettings/setnotificationtime',passport.authenticate('jwt'
     j = schedule.scheduleJob(time, function () {
         const Log = require('./models/log');
         var moment = require('moment');
-        //var d=moment().format('YYYY-MM-DD');
-        var d="2017-01-01"
+        var d=moment().format('YYYY-MM-DD');
+        //var d="2017-01-01"
         Log.getLogNamesByUploadDate(d,(err,log)=>{
             if (err) throw err;
             else{
