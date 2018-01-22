@@ -803,7 +803,15 @@ var ManageNotificationsComponent = /** @class */ (function () {
     };
     ManageNotificationsComponent.prototype.setTime = function () {
         var _this = this;
-        this.usersService.setNotificationTime(this.hour, this.min).subscribe(function (data) {
+        var h = this.hour - 6;
+        var m = this.min - 30;
+        if (h < 0) {
+            h = 24 + h;
+        }
+        if (m < 0) {
+            m = 60 + m;
+        }
+        this.usersService.setNotificationTime(h, m).subscribe(function (data) {
             console.log(data);
             if (data.success) {
                 _this.flashMessagesService.show(data.msg, { cssClass: 'alert-success', timeout: 3000 });
@@ -2724,14 +2732,14 @@ var UsersService = /** @class */ (function () {
         headers.append('Authorization', this.authToken);
         headers.append('Content-Type', 'application/json');
         var body = { "hour": hour, "min": min };
-        return this.http.post('setnotificationtime', body, { headers: headers }).map(function (res) { return res.json(); });
+        return this.http.post('notificationsettings/setnotificationtime', body, { headers: headers }).map(function (res) { return res.json(); });
     };
     UsersService.prototype.getNotificationTime = function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         this.loadToken();
         headers.append('Authorization', this.authToken);
         headers.append('Content-Type', 'application/json');
-        return this.http.get('getnotificationtime', { headers: headers }).map(function (res) { return res.json(); });
+        return this.http.get('notificationsettings/getnotificationtime', { headers: headers }).map(function (res) { return res.json(); });
     };
     UsersService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),

@@ -65,7 +65,7 @@ app.get('/', (req, res) => {
 });
 */
 var j,hour,min;
-app.post('/setnotificationtime',passport.authenticate('jwt', { session: false }), function (req, res, next){
+app.post('/notificationsettings/setnotificationtime',passport.authenticate('jwt', { session: false }), function (req, res, next){
     hour=req.body.hour;
     min=req.body.min;
     var time=min+" "+hour+" * * *";
@@ -100,7 +100,7 @@ app.post('/setnotificationtime',passport.authenticate('jwt', { session: false })
         res.json({sucess:false,msg:"Time not set"});
 });
 
-app.get('/getnotificationtime',passport.authenticate('jwt', { session: false }),function(ewq,res){
+app.get('/notificationsettings/getnotificationtime',passport.authenticate('jwt', { session: false }),function(ewq,res){
     if(hour&&min){
         res.json({hour:hour,min:min});
     }
