@@ -2026,7 +2026,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/upload-log-file/upload-log-file.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Upload Parsed Log File</h2>\n<div class=\"row\">\n    <div class=\"col-md-10\">\n        <flash-messages></flash-messages>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"col-md-10\">\n        <br>\n        <br>\n        <input type=\"file\" accept=\"text/plain\" multiple (change)=\"openFile($event)\">\n        <br>\n        <button class=\"btn-primary\" (click)=\"upload()\">Upload</button>\n    </div>\n</div>"
+module.exports = "<h2>Upload Parsed Log File</h2>\n<div class=\"row\">\n    <div class=\"col-md-10\">\n        <flash-messages></flash-messages>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"col-md-10\">\n        <br>\n        <input type=\"file\" accept=\"text/plain\" multiple (change)=\"openFile($event)\">\n        <br>\n        <button class=\"btn-primary\" (click)=\"upload()\">Upload</button>\n    </div>\n</div>"
 
 /***/ }),
 
