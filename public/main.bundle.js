@@ -2026,7 +2026,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/upload-log-file/upload-log-file.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Upload Parsed Log File</h2>\n<div class=\"row\">\n    <div class=\"col-md-10\">\n        <flash-messages></flash-messages>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"col-md-10\">\n        <input type=\"file\" accept=\"text/plain\" multiple (change)=\"openFile($event)\">\n        <br>\n        <button class=\"btn-primary\" (click)=\"upload()\">Upload</button>\n    </div>\n</div>"
+module.exports = "<h2>Upload Parsed Log File</h2>\n<div class=\"row\">\n    <div class=\"col-md-10\">\n        <flash-messages></flash-messages>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"col-md-10\">\n        <br>\n        <br>\n        <input type=\"file\" accept=\"text/plain\" multiple (change)=\"openFile($event)\">\n        <br>\n        <button class=\"btn-primary\" (click)=\"upload()\">Upload</button>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -2038,6 +2038,8 @@ module.exports = "<h2>Upload Parsed Log File</h2>\n<div class=\"row\">\n    <div
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_log_service__ = __webpack_require__("../../../../../src/app/services/log.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2050,10 +2052,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var UploadLogFileComponent = /** @class */ (function () {
-    function UploadLogFileComponent(http, logService) {
+    function UploadLogFileComponent(http, logService, flashMessagesService) {
         this.http = http;
         this.logService = logService;
+        this.flashMessagesService = flashMessagesService;
     }
     UploadLogFileComponent.prototype.ngOnInit = function () {
         this.filesToUpload = [];
@@ -2086,10 +2090,10 @@ var UploadLogFileComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/components/upload-log-file/upload-log-file.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/upload-log-file/upload-log-file.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_log_service__["a" /* LogService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_log_service__["a" /* LogService */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_log_service__["a" /* LogService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_log_service__["a" /* LogService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object])
     ], UploadLogFileComponent);
     return UploadLogFileComponent;
-    var _a, _b;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=upload-log-file.component.js.map
