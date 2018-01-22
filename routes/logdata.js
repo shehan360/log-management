@@ -16,9 +16,9 @@ router.post('/savelog', function (req, res) {
     Log.uploadLog(req.body.text,(err, log) => {
         if (err) {
             console.log(err);
-            res.json({sucess:false,msg:"Log not saved!"});}
+            res.json({success:false,msg:"Log not saved!"});}
         else
-            res.json({sucess:true,msg:"Log Saved!"});
+            res.json({success:true,msg:"Log Saved!"});
     });
 });
 

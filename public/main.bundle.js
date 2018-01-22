@@ -2073,7 +2073,12 @@ var UploadLogFileComponent = /** @class */ (function () {
                 // this 'text' is the content of the file
                 var text = reader.result;
                 _this.logService.saveLog(text).subscribe(function (data) {
-                    console.log(data);
+                    if (data.success) {
+                        _this.flashMessagesService.show(data.msg, { cssClass: 'alert-success', timeout: 3000 });
+                    }
+                    else {
+                        _this.flashMessagesService.show(data.msg, { cssClass: 'alert-danger', timeout: 3000 });
+                    }
                 });
             };
             reader.readAsText(this_1.input.files[index]);

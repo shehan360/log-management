@@ -34,17 +34,17 @@ router.post('/sendnotifications',passport.authenticate('jwt', { session: false }
             console.log("Successfully sent message:", response);
             Notification.saveNotification(newNotification, (err, success) => {
                 if (success) {
-                    res.json({sucess:true,msg:"Notification sent"}) 
+                    res.json({success:true,msg:"Notification sent"}) 
                 }
                 else {
-                    res.json({sucess:false,msg:"Failed to save Notification!"});
+                    res.json({success:false,msg:"Failed to save Notification!"});
                 }
             });
             
         })
         .catch(function (error) {
             console.log("Error sending message:", error);
-            res.json({sucess:false,msg:"Failed to Send Notification!"}) 
+            res.json({success:false,msg:"Failed to Send Notification!"}) 
         });
 
 
