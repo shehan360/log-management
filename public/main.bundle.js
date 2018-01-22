@@ -2549,10 +2549,12 @@ var LogService = /** @class */ (function () {
     };
     LogService.prototype.getLogNames = function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        headers.append('Content-Type', 'application/json');
         return this.http.get('logdata/lognames', { headers: headers }).map(function (res) { return res.json(); });
     };
     LogService.prototype.getLogLocations = function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        headers.append('Content-Type', 'application/json');
         return this.http.get('logdata/locations', { headers: headers }).map(function (res) { return res.json(); });
     };
     LogService.prototype.getLogNamesByLocation = function (location) {
