@@ -814,13 +814,14 @@ var ManageNotificationsComponent = /** @class */ (function () {
     };
     ManageNotificationsComponent.prototype.setTime = function () {
         var _this = this;
-        var h = this.hour - 6;
+        var h = this.hour - 5;
         var m = this.min - 30;
-        if (h < 0) {
-            h = 24 + h;
-        }
         if (m < 0) {
             m = 60 + m;
+            h--;
+        }
+        if (h < 0) {
+            h = 24 + h;
         }
         this.usersService.setNotificationTime(h, m).subscribe(function (data) {
             console.log(data);
