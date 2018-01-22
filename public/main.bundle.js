@@ -796,6 +796,17 @@ var ManageNotificationsComponent = /** @class */ (function () {
         this.usersService.getNotificationTime().subscribe(function (data) {
             _this.hour = data.hour;
             _this.min = data.min;
+            if (_this.hour != -1 && _this.min != -1) {
+                _this.hour = _this.hour + 5;
+                _this.min = _this.min + 30;
+                if (_this.min > 59) {
+                    _this.hour++;
+                    _this.min = _this.min - 60;
+                }
+                if (_this.hour > 23) {
+                    _this.hour = _this.hour - 24;
+                }
+            }
             if (_this.hour == -1) {
                 _this.check = true;
             }
