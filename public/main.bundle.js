@@ -2079,6 +2079,9 @@ var UploadLogFileComponent = /** @class */ (function () {
                     else {
                         _this.flashMessagesService.show(data.msg, { cssClass: 'alert-danger', timeout: 3000 });
                     }
+                    if (data.ok == false) {
+                        _this.flashMessagesService.show("Log not saved!", { cssClass: 'alert-danger', timeout: 3000 });
+                    }
                 });
             };
             reader.readAsText(this_1.input.files[index]);

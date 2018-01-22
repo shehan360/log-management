@@ -18,7 +18,7 @@ router.post('/savelog', function (req, res) {
             console.log(err);
             res.json({success:false,msg:"Log not saved!"});}
         else
-            res.json({success:true,msg:"Log Saved!"});
+            res.json({success:true,msg:"Log saved"});
     });
 });
 
