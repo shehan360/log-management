@@ -2,11 +2,23 @@ var express = require('express');
 var router = express.Router();
 const Log = require('../models/log');
 
+
 router.get('/lognames', function (req, res) {
     Log.getLogNames((err, log) => {
         if (err) throw err;
         else
             res.json({ log });
+    });
+});
+
+router.post('/savelog', function (req, res) {
+    
+    Log.uploadLog(req.body.text,(err, log) => {
+        if (err) {
+            console.log(err);
+            res.json({sucess:false,msg:"Log not saved!"});}
+        else
+            res.json({sucess:true,msg:"Log Saved!"});
     });
 });
 
@@ -177,7 +189,6 @@ router.post('/nofailedtransactions',function(req,res){
             res.json(log);
     })
 });
-
 
 
 module.exports = router;

@@ -95,12 +95,16 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_errors_view_errors_view_component__ = __webpack_require__("../../../../../src/app/components/errors-view/errors-view.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_shared_scatterchart_scatterchart_component__ = __webpack_require__("../../../../../src/app/components/shared/scatterchart/scatterchart.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_manage_users_manage_users_component__ = __webpack_require__("../../../../../src/app/components/manage-users/manage-users.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_manage_notifications_manage_notifications_component__ = __webpack_require__("../../../../../src/app/components/manage-notifications/manage-notifications.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_upload_log_file_upload_log_file_component__ = __webpack_require__("../../../../../src/app/components/upload-log-file/upload-log-file.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -148,6 +152,8 @@ var appRoutes = [
             { path: 'errorsview', component: __WEBPACK_IMPORTED_MODULE_24__components_errors_view_errors_view_component__["a" /* ErrorsViewComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_17__guards_auth_guard__["a" /* AuthGuard */]] },
             { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_10__components_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_17__guards_auth_guard__["a" /* AuthGuard */]] },
             { path: 'manageusers', component: __WEBPACK_IMPORTED_MODULE_26__components_manage_users_manage_users_component__["a" /* ManageUsersComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_16__guards_adminauth_guard__["a" /* AdminauthGuard */]] },
+            { path: 'managenotifications', component: __WEBPACK_IMPORTED_MODULE_27__components_manage_notifications_manage_notifications_component__["a" /* ManageNotificationsComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_16__guards_adminauth_guard__["a" /* AdminauthGuard */]] },
+            { path: 'uploadlog', component: __WEBPACK_IMPORTED_MODULE_28__components_upload_log_file_upload_log_file_component__["a" /* UploadLogFileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_16__guards_adminauth_guard__["a" /* AdminauthGuard */]] },
         ]
     }
 ];
@@ -183,6 +189,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_24__components_errors_view_errors_view_component__["a" /* ErrorsViewComponent */],
                 __WEBPACK_IMPORTED_MODULE_25__components_shared_scatterchart_scatterchart_component__["a" /* ScatterchartComponent */],
                 __WEBPACK_IMPORTED_MODULE_26__components_manage_users_manage_users_component__["a" /* ManageUsersComponent */],
+                __WEBPACK_IMPORTED_MODULE_27__components_manage_notifications_manage_notifications_component__["a" /* ManageNotificationsComponent */],
+                __WEBPACK_IMPORTED_MODULE_28__components_upload_log_file_upload_log_file_component__["a" /* UploadLogFileComponent */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -210,7 +218,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".scrolly{\r\n    overflow-y: scroll;\r\n}", ""]);
+exports.push([module.i, ".scrolly{\r\n    overflow-y: scroll;\r\n}\r\n", ""]);
 
 // exports
 
@@ -223,7 +231,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/day-view/day-view.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n  <h1>Summary</h1>\n  <br>\n  <h4>Log: {{selLogName}}</h4>\n  <h4>Log Valid From - {{logDateFrom}}</h4>\n  <h4>Log Valid Till - {{logDateTo}}</h4>\n  <h4>Log Upload: {{logUploadDate}}</h4>\n  <h4>ATM ID: {{atmId}}</h4>\n  <h4>Device Type: {{deviceType}}</h4>\n  <h4>Location: {{location}}</h4>\n  <br>\n<div class=\"row\">\n  <div class=\"col-md-10\">\n    <h4>Number of Successful Transactions: {{successTransactions}} </h4>\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\" *ngFor=\"let transactionType of transactionsByType\">{{transactionType.type}}s : {{transactionType.count}}</li>\n    </ul>\n  </div>\n  <div class=\"col-md-2\">\n    <!--<app-linechart [ad]=\"gg\" [labelY]=\"labelY1\" [sName]=\"sName1\"></app-linechart>-->\n  </div>  \n</div>\n\n<div class=\"row\">\n    <div class=\"col-md-10\">\n      <br>\n      <h4>Number of Failed Transactions: {{failedTransactions}}</h4>\n      <ul class=\"list-group\">\n        <li class=\"list-group-item\">Due to User Errors : {{noUserErrors}}</li>\n        <li class=\"list-group-item\">Due to Technical Errors : {{noTechnicalTransactionErrors}}</li>\n      </ul>\n      <h4>Other Technical Errors: {{noTechnicalErrors-noTechnicalTransactionErrors}}</h4>\n      <br>\n    </div>\n  </div>\n\n<div class=\"row\">\n    <div class=\"col-md-10\">\n      <h4>Total Transaction Value: {{totalTAmount}}</h4>\n      <ul class=\"list-group\">\n        <li class=\"list-group-item\" *ngFor=\"let transactionType of transactionsByType\">{{transactionType.type}}s : {{transactionType.amount}}</li>\n      </ul>\n    </div>\n    <div class=\"col-md-2\">\n \n    </div>  \n  </div>\n  \n\n\n  \n\n  \n<div class=\"row\">\n    <div class=\"col-md-10\">\n      <br>\n        <h4>Uptime:</h4>\n        <app-linechart [dataSet]=\"dataSet\" [labelY]=\"labelY2\"></app-linechart>\n      </div>\n      <div class=\"col-md-2\"></div>\n</div>"
+module.exports = "<h1>\n  Summary</h1>\n<br>\n\n\n  <table class=\"\">\n    <tr>\n      <td>\n        <h4>Log:</h4>\n      </td>\n      <td>\n        <h4>{{selLogName}}</h4>\n      </td>\n    </tr>\n    <tr>\n      <td>\n        <h4>Log Valid From:</h4>\n      </td>\n      <td>\n        <h4>{{logDateFrom}}</h4>\n      </td>\n    </tr>\n    <tr>\n      <td>\n        <h4>Log Valid Till:</h4>\n      </td>\n      <td>\n        <h4>{{logDateTo}}</h4>\n      </td>\n    </tr>\n    <tr>\n      <td>\n        <h4>Log Uploaded On:</h4>\n      </td>\n      <td>\n        <h4>{{logUploadDate}}</h4>\n      </td>\n    </tr>\n    <tr>\n      <td>\n        <h4>ATM Id:</h4>\n      </td>\n      <td>\n        <h4>{{atmId}}</h4>\n      </td>\n    </tr>\n    <tr>\n      <td>\n        <h4>Device Type:</h4>\n      </td>\n      <td>\n        <h4>{{deviceType}}</h4>\n      </td>\n    </tr>\n    <tr>\n      <td>\n        <h4>Location:</h4>\n      </td>\n      <td>\n        <h4>{{location}}</h4>\n      </td>\n    </tr>\n  </table>\n\n<br>\n<div class=\"row\">\n  <div class=\"col-md-10\">\n    <h4>Number of Successful Transactions: {{successTransactions}} </h4>\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\" *ngFor=\"let transactionType of transactionsByType\">{{transactionType.type}}s : {{transactionType.count}}</li>\n    </ul>\n  </div>\n  <div class=\"col-md-2\">\n    <!--<app-linechart [ad]=\"gg\" [labelY]=\"labelY1\" [sName]=\"sName1\"></app-linechart>-->\n  </div>\n</div>\n\n<div class=\"row\">\n  <div class=\"col-md-10\">\n    <br>\n    <h4>Number of Failed Transactions: {{failedTransactions}}</h4>\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\">Due to User Errors : {{noUserErrors}}</li>\n      <li class=\"list-group-item\">Due to Technical Errors : {{noTechnicalTransactionErrors}}</li>\n    </ul>\n    <h4>Other Technical Errors: {{noTechnicalErrors-noTechnicalTransactionErrors}}</h4>\n    <br>\n  </div>\n</div>\n\n<div class=\"row\">\n  <div class=\"col-md-10\">\n    <h4>Total Transaction Value: {{totalTAmount}}</h4>\n    <ul class=\"list-group\">\n      <li class=\"list-group-item\" *ngFor=\"let transactionType of transactionsByType\">{{transactionType.type}}s : {{transactionType.amount}}</li>\n    </ul>\n  </div>\n  <div class=\"col-md-2\">\n\n  </div>\n</div>\n\n\n\n\n\n\n<div class=\"row\">\n  <div class=\"col-md-10\">\n    <br>\n    <h4>Uptime:</h4>\n    <app-linechart [dataSet]=\"dataSet\" [labelY]=\"labelY2\"></app-linechart>\n  </div>\n  <div class=\"col-md-2\"></div>\n</div>"
 
 /***/ }),
 
@@ -388,7 +396,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/errors-view/errors-view.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Errors</h1>\n\n<br>\n<h4>Technical Errors: {{noTechnicalErrors}}</h4>\n<div class=\"wellcol well\">\n<p class=\"lead\"><a data-toggle=\"collapse\" href=\"#collapse1\">During transactions: {{noTechnicalTransactionErrors}} <span class=\"caret\"></span></a></p>\n<div id=\"collapse1\" class=\"collapse\">\n<div class=\"well well-sm well-ex\" *ngFor=\"let terror of technicalTransactionErrors\">\n  <p>Error ID: {{terror.transactions.error.errorId}}</p>\n  <p>Description: {{terror.transactions.error.desc}}</p>\n  <p>Time: {{terror.transactions.time}}</p>\n  <p>Transaction Id: {{terror.transactions.transactionId}}</p>\n  <p>Transaction Type: {{terror.transactions.type}}</p>\n</div>\n</div>\n</div>\n\n<div class=\"well\">\n<p class=\"lead\"><a data-toggle=\"collapse\" href=\"#collapse2\">Other Errrors: {{noTechnicalErrors-noTechnicalTransactionErrors}} <span class=\"caret\"></span></a></p>\n<div id=\"collapse2\" class=\"collapse\">\n<div class=\"well well-sm\" *ngFor=\"let terror of otherTechnicalErrors\">\n  <p>Error ID: {{terror.errors.errorId}}</p>\n  <p>Description: {{terror.errors.errorName}}</p>\n  <p>Time: {{terror.errors.time}}</p>\n</div>\n</div>\n</div>\n<div class=\"col-md-10\">\n<app-scatterchart [yLabels]=\"yLabels3\" [xLabels]=\"allErrorTimes\" [dataSet1]=\"tedataset\" [dataSet2]=\"oedataset\"></app-scatterchart>\n</div>\n\n<div class=\"row\">\n    <br>\n    <div class=\"col-md-6\">\n    <h4>Failed transactions due to user errors: {{noUserErrors}}</h4>\n    </div>\n    <div class=\"col-md-6\"></div>\n  </div>\n    <div class=\"row\">\n    <div class=\"col-md-6\"><app-barchart [labels]=\"barLabels\" [data]=\"barData\"></app-barchart></div>\n    </div>\n"
+module.exports = "<h1>Errors</h1>\n\n<br>\n<h4>Technical Errors: {{noTechnicalErrors}}</h4>\n<div *ngIf=\"showTechnicalErrors\" class=\"wellcol well\">\n<p class=\"lead\"><a data-toggle=\"collapse\" href=\"#collapse1\">During transactions: {{noTechnicalTransactionErrors}} <span class=\"caret\"></span></a></p>\n<div id=\"collapse1\" class=\"collapse\">\n<div class=\"well well-sm well-ex\" *ngFor=\"let terror of technicalTransactionErrors\">\n  <p>Error ID: {{terror.transactions.error.errorId}}</p>\n  <p>Description: {{terror.transactions.error.desc}}</p>\n  <p>Time: {{terror.transactions.time}}</p>\n  <p>Transaction Id: {{terror.transactions.transactionId}}</p>\n  <p>Transaction Type: {{terror.transactions.type}}</p>\n</div>\n</div>\n</div>\n\n<div *ngIf=\"showTechnicalErrors\" class=\"well\">\n<p class=\"lead\"><a data-toggle=\"collapse\" href=\"#collapse2\">Other Errrors: {{noTechnicalErrors-noTechnicalTransactionErrors}} <span class=\"caret\"></span></a></p>\n<div id=\"collapse2\" class=\"collapse\">\n<div class=\"well well-sm\" *ngFor=\"let terror of otherTechnicalErrors\">\n  <p>Error ID: {{terror.terrors.errorId}}</p>\n  <p>Description: {{terror.terrors.errorName}}</p>\n  <p>Time: {{terror.terrors.time}}</p>\n</div>\n</div>\n</div>\n<div *ngIf=\"showTechnicalErrors\" class=\"col-md-10\">\n<app-scatterchart [yLabels]=\"yLabels3\" [xLabels]=\"allErrorTimes\" [dataSet1]=\"tedataset\" [dataSet2]=\"oedataset\"></app-scatterchart>\n</div>\n\n<div class=\"row\">\n    <br>\n    <div class=\"col-md-6\">\n    <h4>Failed transactions due to user errors: {{noUserErrors}}</h4>\n    </div>\n    <div class=\"col-md-6\"></div>\n  </div>\n    <div *ngIf=\"showUserErrors\" class=\"row\">\n    <div class=\"col-md-6\"><app-barchart [labels]=\"barLabels\" [data]=\"barData\"></app-barchart></div>\n    </div>\n"
 
 /***/ }),
 
@@ -432,6 +440,8 @@ var ErrorsViewComponent = /** @class */ (function () {
     }
     ErrorsViewComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.showTechnicalErrors = true;
+        this.showUserErrors = true;
         this.allErrorTimes = [];
         this.logService.currentLog.subscribe(function (currentLog) {
             _this.allErrorTimes = [];
@@ -455,6 +465,12 @@ var ErrorsViewComponent = /** @class */ (function () {
             //this.allErrors.push(new Error(null,this.logDateO,"none"));
             _this.logService.getNoTechnicalErrors(currentLog).subscribe(function (data) {
                 _this.noTechnicalErrors = data[0].count;
+                if (_this.noTechnicalErrors > 0) {
+                    _this.showTechnicalErrors = true;
+                }
+                else {
+                    _this.showTechnicalErrors = false;
+                }
             });
             _this.logService.getNoTransactionTechnicalErrors(currentLog).subscribe(function (data) {
                 _this.noTechnicalTransactionErrors = data[0].count;
@@ -472,10 +488,10 @@ var ErrorsViewComponent = /** @class */ (function () {
                 _this.logService.getOtherTechnicalErrors(currentLog).subscribe(function (data) {
                     _this.otherTechnicalErrors = data;
                     for (var i = 0; i < _this.otherTechnicalErrors.length; i++) {
-                        _this.otherTechnicalErrors[i].errors.time = new Date(_this.otherTechnicalErrors[i].errors.time);
-                        _this.allErrors3.push(new Error(_this.otherTechnicalErrors[i].errors.errorName, new Date(_this.otherTechnicalErrors[i].errors.time), "other"));
-                        if (_this.yLabels.indexOf(_this.otherTechnicalErrors[i].errors.errorName) == -1) {
-                            _this.yLabels2.push(_this.otherTechnicalErrors[i].errors.errorName);
+                        _this.otherTechnicalErrors[i].terrors.time = new Date(_this.otherTechnicalErrors[i].terrors.time);
+                        _this.allErrors3.push(new Error(_this.otherTechnicalErrors[i].terrors.errorName, new Date(_this.otherTechnicalErrors[i].terrors.time), "other"));
+                        if (_this.yLabels.indexOf(_this.otherTechnicalErrors[i].terrors.errorName) == -1) {
+                            _this.yLabels2.push(_this.otherTechnicalErrors[i].terrors.errorName);
                         }
                     }
                     _this.allErrorsf = _this.allErrors.concat(_this.allErrors2, _this.allErrors3);
@@ -499,6 +515,12 @@ var ErrorsViewComponent = /** @class */ (function () {
             });
             _this.logService.getNoUserErrors(currentLog).subscribe(function (data) {
                 _this.noUserErrors = data[0].count;
+                if (_this.noUserErrors > 0) {
+                    _this.showUserErrors = true;
+                }
+                else {
+                    _this.showUserErrors = false;
+                }
             });
             _this.logService.getUserErrorPoints(currentLog).subscribe(function (data) {
                 _this.barLabels = [];
@@ -534,7 +556,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".jump-height{\r\n    height:450px;\r\n}\r\n\r\n.logo-set{\r\n    height: 100%;\r\n    margin-left: -24px;\r\n    padding-top: 10px;\r\n}\r\n\r\n.jumbotron{\r\n    background-color: #2980b9 ;\r\n    color:#000;\r\n}\r\n.btn-default{\r\n    background-color: #f8f8f8;\r\n    border-color: #f8f8f8;\r\n}\r\n\r\n.navbar{\r\n    background-color: #f8f8f8;\r\n    margin-bottom:0px;\r\n}\r\n\r\n.navbar-default{\r\n    border-color: #fff;\r\n}\r\n\r\nh1, .h1, h2, .h2, h3, .h3{\r\n    margin-bottom:20px !important;\r\n}", ""]);
+exports.push([module.i, ".jump-height{\r\n    height:450px;\r\n}\r\n\r\n.logo-set{\r\n    height: 100%;\r\n    margin-left: -24px;\r\n    padding-top: 10px;\r\n}\r\n\r\n.jumbotron{\r\n    background-color: #35353C ;\r\n    color:#000;\r\n}\r\n.btn-default{\r\n    background-color: #f8f8f8;\r\n    border-color: #f8f8f8;\r\n}\r\n\r\n.navbar{\r\n    background-color: #f8f8f8;\r\n    margin-bottom:0px;\r\n}\r\n\r\n.navbar-default{\r\n    border-color: #fff;\r\n}\r\n\r\nh1, .h1, h2, .h2, h3, .h3{\r\n    margin-bottom:20px !important;\r\n}", ""]);
 
 // exports
 
@@ -547,7 +569,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <!-- Main component for a primary marketing message or call to action -->\n  <div class=\"jumbotron jump-height\">\n    <h1>DEEPL</h1>\n    <h2>Log Management System.</h2>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"col-md-9\">\n      <div class=\"col-md-3\">\n        <h3>Built Using:</h3>\n      </div>\n      <div class=\"col-md-9 logo-set\"><img src=\"assets/meanstack-logo.jpg\" alt=\"logos\" height=\"42\"></div>\n    </div>\n\n    <div class=\"col-md-3\">\n      <h3>Contact Us:</h3>\n      <p>Developed By Team Pie <span class=\"glyphicon glyphicon-copyright-mark\"></span></p>\n      <p>teamPie@icloud.com</p>\n      <p>+9477TEAMPIE</p>\n    </div>\n  </div>\n\n</div>"
+module.exports = "<div class=\"container\">\n  <!-- Main component for a primary marketing message or call to action -->\n  <div class=\"jumbotron jump-height\">\n    <h1>DEEPL }</h1>\n    <h2>Log Management System.</h2>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"col-md-9\">\n      <div class=\"col-md-3\">\n        <h3>Built Using:</h3>\n      </div>\n      <div class=\"col-md-9 logo-set\"><img src=\"assets/meanstack-logo.jpg\" alt=\"logos\" height=\"42\"></div>\n    </div>\n\n    <div class=\"col-md-3\">\n      <h3>Contact Us:</h3>\n      <p>Developed By Team Pie <span class=\"glyphicon glyphicon-copyright-mark\"></span></p>\n      <p>teamPie@icloud.com</p>\n      <p>+9477TEAMPIE</p>\n    </div>\n  </div>\n\n</div>"
 
 /***/ }),
 
@@ -618,7 +640,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "   <div class=\"container\">   \n  <div class=\"col-md-4\">\n    <h2 class=\"page-header\">Login</h2>\n    <flash-messages></flash-messages>    \n    <form (submit)=\"onLoginSubmit()\">\n      <div class=\"form-group\">\n        <label>Username</label>\n        <input type=\"text\" class=\"form-control\" [(ngModel)]=\"username\" name=\"username\">\n      </div>\n      <div class=\"form-group\">\n        <label>Password</label>\n        <input type=\"password\" class=\"form-control\" [(ngModel)]=\"password\" name=\"password\">\n      </div>\n      <input type=\"submit\" class=\"btn btn-primary\" value=\"Login\">\n    </form>\n  </div>\n  <div class=\"col-md-4\"></div>\n   </div>\n\n"
+module.exports = "<div class=\"container\">\n  <div class=\"col-md-4\">\n    <h2 class=\"page-header\">Login</h2>\n    <flash-messages></flash-messages>\n    <form (submit)=\"onLoginSubmit()\">\n      <div class=\"form-group\">\n        <label>Username</label>\n        <input type=\"text\" class=\"form-control\" [(ngModel)]=\"username\" name=\"username\">\n      </div>\n      <div class=\"form-group\">\n        <label>Password</label>\n        <input type=\"password\" class=\"form-control\" [(ngModel)]=\"password\" name=\"password\">\n      </div>\n      <input type=\"submit\" class=\"btn btn-primary\" value=\"Login\">\n    </form>\n  </div>\n  <div class=\"col-md-4\"></div>\n</div>"
 
 /***/ }),
 
@@ -687,6 +709,131 @@ var LoginComponent = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=login.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/manage-notifications/manage-notifications.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/manage-notifications/manage-notifications.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<h1>Manage Notifications</h1>\n<br>\n\n<div class=\"row\">\n<flash-messages></flash-messages>\n  <div class=\"col-md-4 well\">\n    <h4>Send Notification</h4>\n\n    \n    <form (submit)=\"onSend()\">\n      <div class=\"form-group\">\n        <label>Title</label>\n        <input type=\"text\" class=\"form-control\" [(ngModel)]=\"title\" name=\"title\">\n      </div>\n      <div class=\"form-group\">\n        <label>Body</label>\n        <input type=\"text\" class=\"form-control\" [(ngModel)]=\"body\" name=\"body\">\n      </div>\n      <input type=\"submit\" class=\"btn btn-primary\" value=\"Send\">\n    </form>\n  </div>\n  <div class=\"col-md-1\"></div>\n  <div class=\"col-md-6 well\">\n    <h4>Set auto notification time</h4>\n    <form class=\"form-inline\">\n      <div class=\"form-group\">\n        <label for=\"hour\">HH(0-24)</label>\n        <input (keyup)=\"checkTime()\" type=\"text\" class=\"form-control\"  name=\"hour\" [(ngModel)]=\"hour\" placeholder=\"HH(0-24)\">\n      </div>\n      <div class=\"form-group\">\n          <label for=\"minute\">HH(0-24)</label>\n        <input (keyup)=\"checkTime()\" type=\"text\" class=\"form-control\" name=\"minute\" [(ngModel)]=\"min\" placeholder=\":MM(0-59)\">\n      </div>\n      <button [disabled]=\"check\" type=\"submit\" class=\"btn btn-primary\" (click)=\"setTime()\">Set</button>\n    </form>\n  </div>\n</div>\n<h4>Sent Notifications</h4>\n\n<div class=\"row\">\n\n  <div class=\"col-md-8 well well-format\">\n    <table class=\"table table-hover\">\n      <thead>\n        <tr>\n          <th>Title</th>\n          <th>Body</th>\n          <th>Date</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr *ngFor=\"let notification of notifications\">\n          <td>{{notification.title}}</td>\n          <td>{{notification.body}}</td>\n          <td>{{notification.date}}</td>\n\n        </tr>\n      </tbody>\n    </table>\n  </div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/manage-notifications/manage-notifications.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ManageNotificationsComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_users_service__ = __webpack_require__("../../../../../src/app/services/users.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var ManageNotificationsComponent = /** @class */ (function () {
+    function ManageNotificationsComponent(usersService, flashMessagesService) {
+        this.usersService = usersService;
+        this.flashMessagesService = flashMessagesService;
+    }
+    ManageNotificationsComponent.prototype.ngOnInit = function () {
+        this.setNotifications();
+        this.getNotificationTime();
+    };
+    ManageNotificationsComponent.prototype.onSend = function () {
+        var _this = this;
+        this.usersService.sendNotification(this.title, this.body).subscribe(function (data) {
+            if (data.success) {
+                _this.flashMessagesService.show(data.msg, { cssClass: 'alert-success', timeout: 3000 });
+                _this.title = "";
+                _this.body = "";
+                _this.setNotifications();
+            }
+            else {
+                _this.flashMessagesService.show(data.msg, { cssClass: 'alert-danger', timeout: 3000 });
+            }
+        });
+        this.setNotifications();
+    };
+    ManageNotificationsComponent.prototype.setNotifications = function () {
+        var _this = this;
+        this.usersService.getNotifications().subscribe(function (data) {
+            _this.notifications = data.notf;
+            for (var i = 0; i < _this.notifications.length; i++) {
+                _this.notifications[i].date = new Date(_this.notifications[i].date);
+            }
+        });
+    };
+    ManageNotificationsComponent.prototype.getNotificationTime = function () {
+        var _this = this;
+        this.usersService.getNotificationTime().subscribe(function (data) {
+            _this.hour = data.hour;
+            _this.min = data.min;
+            if (_this.hour == -1) {
+                _this.check = true;
+            }
+        });
+    };
+    ManageNotificationsComponent.prototype.setTime = function () {
+        var _this = this;
+        this.usersService.setNotificationTime(this.hour, this.min).subscribe(function (data) {
+            console.log(data);
+            if (data.success) {
+                _this.flashMessagesService.show(data.msg, { cssClass: 'alert-success', timeout: 3000 });
+            }
+            else {
+                _this.flashMessagesService.show(data.msg, { cssClass: 'alert-danger', timeout: 3000 });
+            }
+        });
+    };
+    ManageNotificationsComponent.prototype.checkTime = function () {
+        if (this.hour >= 0 && this.hour < 24 && this.min >= 0 && this.min <= 59) {
+            this.check = false;
+        }
+        else {
+            this.check = true;
+        }
+    };
+    ManageNotificationsComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-manage-notifications',
+            template: __webpack_require__("../../../../../src/app/components/manage-notifications/manage-notifications.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/manage-notifications/manage-notifications.component.css")]
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_users_service__["a" /* UsersService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_users_service__["a" /* UsersService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"]) === "function" && _b || Object])
+    ], ManageNotificationsComponent);
+    return ManageNotificationsComponent;
+    var _a, _b;
+}());
+
+//# sourceMappingURL=manage-notifications.component.js.map
 
 /***/ }),
 
@@ -1567,7 +1714,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/transactions-view/transactions-view.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n  <h1>Transactions</h1>\n  <div class=\"row\">\n    <div class=\"col-md-6\">\n      <h4>Number of successful transactions: {{successTransactions}}</h4>\n      <ul class=\"list-group\">\n        <li class=\"list-group-item\" *ngFor=\"let transactionType of transactionsByType\">{{transactionType.type}}s : {{transactionType.count}}</li>\n      </ul>\n    </div>\n    <div class=\"col-md-6\">\n    </div>  \n  </div>\n  <div class=\"row\">\n    <div class=\"col-md-10\"><app-linechart [dataSet]=\"dataSetf\" [labelY]=\"labelY1\"></app-linechart></div>\n  </div>\n  <div class=\"row\">\n  \n</div>\n  <div class=\"row\">\n      <div class=\"col-md-10\">\n        <h4>Total Transaction Value: {{totalTAmount}} </h4>\n        <ul class=\"list-group\">\n          <li class=\"list-group-item\" *ngFor=\"let transactionType of transactionsByType\">{{transactionType.type}}s : {{transactionType.amount}}</li>\n        </ul>\n      </div>\n      <div class=\"col-md-2\">\n   \n      </div>  \n    </div>\n\n    <div class=\"row\">\n        <div class=\"col-md-10 well well-format\">\n            <table class=\"table table-hover\">\n                <thead>\n                  <tr>\n                    <th>Type</th>\n                    <th>Time</th>\n                    <th>Total Value</th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr *ngFor=\"let tValue of tValuesByTime\">\n                    <td>{{tValue.type}}</td>\n                    <td>{{tValue.hour}}:00</td>\n                    <td>{{tValue.total}}</td>\n                  </tr>\n                </tbody>\n            </table>\n        </div>\n        <div class=\"col-md-2\">\n     \n        </div>  \n      </div>\n\n \n  "
+module.exports = "\n  <h1>Transactions</h1>\n  <div class=\"row\">\n    <div class=\"col-md-10\">\n      <h4>Number of successful transactions: {{successTransactions}}</h4>\n      <ul class=\"list-group\">\n        <li class=\"list-group-item\" *ngFor=\"let transactionType of transactionsByType\">{{transactionType.type}}s : {{transactionType.count}}</li>\n      </ul>\n    </div>\n    <div class=\"col-md-2\">\n    </div>  \n  </div>\n  <div class=\"row\">\n    <div class=\"col-md-10\"><app-linechart [dataSet]=\"dataSetf\" [labelY]=\"labelY1\"></app-linechart></div>\n  </div>\n  <div class=\"row\">\n  \n</div>\n  <div class=\"row\">\n      <div class=\"col-md-10\">\n        <h4>Total Transaction Value: {{totalTAmount}} </h4>\n        <ul class=\"list-group\">\n          <li class=\"list-group-item\" *ngFor=\"let transactionType of transactionsByType\">{{transactionType.type}}s : {{transactionType.amount}}</li>\n        </ul>\n      </div>\n      <div class=\"col-md-2\">\n   \n      </div>  \n    </div>\n\n    <div class=\"row\">\n        <div class=\"col-md-10 well well-format\">\n            <table class=\"table table-hover\">\n                <thead>\n                  <tr>\n                    <th>Type</th>\n                    <th>Time</th>\n                    <th>Total Value</th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr *ngFor=\"let tValue of tValuesByTime\">\n                    <td>{{tValue.type}}</td>\n                    <td>{{tValue.hour}}:00</td>\n                    <td>{{tValue.total}}</td>\n                  </tr>\n                </tbody>\n            </table>\n        </div>\n        <div class=\"col-md-2\">\n     \n        </div>  \n      </div>\n\n \n  "
 
 /***/ }),
 
@@ -1838,6 +1985,97 @@ var TransactionsViewComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/components/upload-log-file/upload-log-file.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/upload-log-file/upload-log-file.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<h2>Upload Parsed Log File</h2>\n<input type=\"file\" accept=\"text/plain\" multiple (change)=\"openFile($event)\">\n\n<button class=\"btn-primary\" (click)=\"upload()\">Upload</button>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/upload-log-file/upload-log-file.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UploadLogFileComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_log_service__ = __webpack_require__("../../../../../src/app/services/log.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var UploadLogFileComponent = /** @class */ (function () {
+    function UploadLogFileComponent(http, logService) {
+        this.http = http;
+        this.logService = logService;
+    }
+    UploadLogFileComponent.prototype.ngOnInit = function () {
+        this.filesToUpload = [];
+    };
+    UploadLogFileComponent.prototype.openFile = function (event) {
+        this.input = event.target;
+    };
+    UploadLogFileComponent.prototype.upload = function () {
+        var _this = this;
+        var _loop_1 = function () {
+            var reader = new FileReader();
+            reader.onload = function () {
+                // this 'text' is the content of the file
+                var text = reader.result;
+                _this.logService.saveLog(text).subscribe(function (data) {
+                    console.log(data);
+                });
+            };
+            reader.readAsText(this_1.input.files[index]);
+        };
+        var this_1 = this;
+        for (var index = 0; index < this.input.files.length; index++) {
+            _loop_1();
+        }
+        ;
+    };
+    UploadLogFileComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-upload-log-file',
+            template: __webpack_require__("../../../../../src/app/components/upload-log-file/upload-log-file.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/upload-log-file/upload-log-file.component.css")]
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_log_service__["a" /* LogService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_log_service__["a" /* LogService */]) === "function" && _b || Object])
+    ], UploadLogFileComponent);
+    return UploadLogFileComponent;
+    var _a, _b;
+}());
+
+//# sourceMappingURL=upload-log-file.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/guards/adminauth.guard.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2008,7 +2246,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".fullheight{\r\n    height:100%;\r\n}\r\n.full-vh{\r\n    height:100vh;\r\n}\r\n.side-bar{\r\n    background-color: #252528;\r\n    padding-left: 0px;\r\n    padding-right: 0px;\r\n    padding-top:15px;\r\n}\r\n\r\n.nav-pills > li > a {\r\n    color: rgba(255,255,255 ,.60);\r\n    background-color: #252528;\r\n}\r\n\r\n.nav > li > a:hover, .nav > li > a:focus{\r\n    \r\n    color: rgba(255,255,255 ,.87);\r\n    background-color: #252528;\r\n}\r\n\r\n.nav > li > a:hover, .nav > li > a:active{\r\n\r\n    color: rgba(255,255,255 ,1);\r\n}\r\n\r\n.background-body{\r\n    background-color: #f5f5f5 !important;\r\n}\r\n\r\n.dash-content{\r\n    padding-left:0px;\r\n    padding-top:3px;\r\n}\r\n\r\n.drop-down-padding{\r\n    padding-top: 8px;\r\n}\r\n\r\n.navbar{\r\n    margin-bottom: 0px !important;\r\n    background-color: #fff;\r\n    color: #333;\r\n    border: 0px solid rgba(32, 55, 252, 0.00);\r\n    border-radius: 0px;\r\n}\r\n\r\n.scrolly{\r\n    overflow-y: scroll;\r\n}\r\n\r\n.body-padding{\r\n    padding-left:20px;\r\n    padding-bottom:20px;\r\n}\r\n\r\n.full-vh-calc{\r\n    height: calc(100vh - 50px);\r\n}\r\n\r\n\r\n.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand{\r\n    margin-left:0px;\r\n    color:#000;\r\n}\r\n\r\n.container-fluid{\r\n}\r\n\r\n.side-bartop{\r\n    background-color: #2980b9;\r\n    padding-left: 0px;\r\n    padding-right: 0px;\r\n}\r\n\r\n.nav-pills > li > a {\r\n    color: rgba(255,255,255 ,.60);\r\n    background-color: #252528;\r\n}\r\n\r\n.logselect{\r\n    background-color: #fff;\r\n    margin-left: -19px;\r\n    margin-top: -3px;\r\n    margin-right: -15px;\r\n    padding-left: 24px;\r\n    padding-right: 24px;\r\n    padding-bottom: 18px;\r\n    \r\n    \r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n", ""]);
+exports.push([module.i, ".fullheight{\r\n    height:100%;\r\n}\r\n.full-vh{\r\n    height:100vh;\r\n}\r\n.side-bar{\r\n    background-color: #252528;\r\n    padding-left: 0px;\r\n    padding-right: 0px;\r\n    padding-top:15px;\r\n}\r\n\r\n.nav-pills > li > a {\r\n    color: rgba(255,255,255 ,.60);\r\n    background-color: #252528;\r\n}\r\n\r\n.nav > li > a:hover, .nav > li > a:focus{\r\n    \r\n    color: rgba(255,255,255 ,.87);\r\n    background-color: #252528;\r\n    \r\n}\r\n\r\n.nav > li > a:hover, .nav > li > a:active{\r\n\r\n    color: rgba(255,255,255 ,1);\r\n}\r\n\r\n.background-body{\r\n    background-color: #f5f5f5 !important;\r\n}\r\n\r\n.dash-content{\r\n    padding: 5px 30px 30px 30px !important;\r\n}\r\n\r\n.drop-down-padding{\r\n    padding-top: 8px;\r\n}\r\n\r\n.navbar{\r\n    margin-bottom: 0px !important;\r\n    background-color: #fff;\r\n    color: #333;\r\n    border: 0px solid rgba(32, 55, 252, 0.00);\r\n    border-radius: 0px;\r\n}\r\n\r\n.scrolly{\r\n    margin: 0 auto; \r\n    overflow:scroll; \r\n    height: calc(100vh - 50px);\r\n}\r\n\r\n.fix-scrolly{\r\n    height: calc(100vh - 200px)!important;\r\n}\r\n\r\n.topbar{\r\n    padding: 0px 30px;\r\n}\r\n\r\n.body-padding{\r\n    padding-left:20px;\r\n    padding-bottom:20px;\r\n}\r\n\r\n.full-vh-calc{\r\n    height: calc(100vh - 50px);\r\n}\r\n\r\n\r\n.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand{\r\n    margin-left:0px;\r\n    color:#000;\r\n}\r\n\r\n.container-fluid{\r\n}\r\n\r\n.side-bartop{\r\n    background-color: #2980b9;\r\n    padding-left: 0px;\r\n    padding-right: 0px;\r\n}\r\n\r\n.nav-pills > li > a {\r\n    color: rgba(255,255,255 ,.60);\r\n    background-color: #252528;\r\n}\r\n\r\n.logselect{\r\n    background-color: #fff;\r\n    padding-right: 15px;\r\n    width: 100%;\r\n    z-index: 999;\r\n    \r\n}\r\n\r\n.sidebar{\r\n    position: fixed;\r\n    top: 0px;\r\n    bottom: 0;\r\n    left: 0;\r\n    z-index: 1000;\r\n    display: block;\r\n    padding: 0px;\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n    background-color: #252528;\r\n    border-right: 1px solid #eee;\r\n}\r\n\r\n.brand{\r\n    background-color: #35353C!important;\r\n    padding-top: 5px!important;\r\n    padding-left: 4px!important;\r\n    padding:0px;\r\n    border-radius: 0px;\r\n    color:white!important;\r\n    font-size: 18px;\r\n    letter-spacing: 2px;\r\n    margin-bottom: 15px;\r\n    height: 50px;\r\n}\r\n\r\n.p-0{\r\n    padding:0px;\r\n}\r\n\r\n.p-10{\r\n    padding:10px;\r\n}\r\n\r\n.navbar-btn{\r\n   \r\n    \r\n}\r\n.btn{\r\n    padding: 6px 8px;\r\n}\r\n.btn-default{\r\n    color:#3443f6 !important;\r\n    font-weight: 500;\r\n    border-color: #fff;\r\n    outline: none !important;\r\n}\r\n\r\nlabel{\r\n    font-weight: 500 !important;\r\n    color: rgba(0, 0, 0, 0.44) !important;\r\n}\r\n\r\n.form-control{\r\n    margin-bottom:12px;\r\n}\r\n\r\n.inline{\r\n    display: inline-block;\r\n    width:40%;\r\n    margin: 0px!important;\r\n}", ""]);
 
 // exports
 
@@ -2021,7 +2259,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/layouts/dash-layout/dash.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default\">\r\n    <div class=\"container-fluid\">\r\n        <div class=\"row fullheight\">\r\n            <div class=\"col-md-2 side-bartop\">\r\n                <div class=\"navbar-header\">\r\n                    <a class=\"navbar-brand\" [routerLink]=\"['/home']\">DEEPL</a>\r\n                </div>\r\n            </div>\r\n\r\n            <!--<div class=\"col-md-6 drop-down-padding\">\r\n            <select [(ngModel)]=\"selLogName\" class=\"form-control\" (ngModelChange)=\"changeLog()\">\r\n          <option *ngFor=\"let log of logNames\">\r\n            {{ log['logName'] }}\r\n          </option>\r\n        </select>-->\r\n\r\n            <div class=\"col-md-6\">\r\n                <label>Selected Log: {{selLogName}}</label>\r\n                <button class=\"btn navbar-btn\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarToggleExternalContent\" aria-controls=\"navbarToggleExternalContent\"\r\n                    aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n                Change Log <span class=\"caret\"></span> \r\n              </button>\r\n            </div>\r\n\r\n\r\n            <div class=\"col-md-4\">\r\n                <ul class=\"nav navbar-nav navbar-right\">\r\n                    <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/profile']\">Profile</a></li>\r\n                    <li *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/login']\">LogIn</a></li>\r\n                    <li *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/register']\">Register </a></li>\r\n                    <li *ngIf=\"authService.loggedIn()\"><a (click)=\"onLogoutClick()\" [routerLink]=\"['/home']\">Logout</a></li>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</nav>\r\n<div class=\"container-fluid full-vh-calc\">\r\n    <div class=\"row fullheight\">\r\n        <div class=\"col-md-2 side-bar fullheight\">\r\n            <ul class=\"nav nav-pills nav-stacked\">\r\n                <li><a [routerLink]=\"['/summary']\">Summary</a></li>\r\n                <li><a [routerLink]=\"['/transactionsview']\">Transactions</a></li>\r\n                <li><a [routerLink]=\"['/errorsview']\">Errors</a></li>\r\n                <li *ngIf=\"isAdmin\"><a [routerLink]=\"['/manageusers']\">Manage Users</a></li>\r\n            </ul>\r\n        </div>\r\n        <div class=\"col-md-10 dash-content fullheight background-body scrolly body-padding\">\r\n            <div class=\"collapse logselect\" id=\"navbarToggleExternalContent\">\r\n\r\n                <label>Location:</label>\r\n                <select [(ngModel)]=\"selLocation\" (ngModelChange)=\"changeLogList()\" class=\"form-control\">\r\n                                <option>Any</option>\r\n                                <option *ngFor=\"let log of logLocations\">\r\n                                        {{ log['location'] }}\r\n                                      </option>\r\n                          </select>\r\n                <label>Date:</label>\r\n                <br>\r\n                <input type=\"date\" [(ngModel)]=\"selDate\" (ngModelChange)=\"changeLogList()\" class=\"form-control\">\r\n                <label>Log Name:</label>\r\n                <select [(ngModel)]=\"selLogName\" class=\"form-control\" (ngModelChange)=\"changeLog()\">\r\n                                <option *ngFor=\"let log of logNames\">\r\n                                  {{ log['logName'] }}\r\n                                </option>\r\n                              </select>\r\n\r\n            </div>\r\n            <router-outlet></router-outlet>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"row\">\r\n    <div class=\"col-md-2 sidebar\">\r\n        <ul class=\"nav nav-pills nav-stacked fullheight\">\r\n            <li><a class=\"brand\" [routerLink]=\"['/']\"><img src=\"assets/logo_deepl.png\" alt=\"logos\" height=\"42\"></a></li>\r\n            <li><a [routerLink]=\"['/summary']\">Summary <div class=\"pull-right\" style=\"margin-right:10px;\"> <img src=\"assets/activity.svg\" height=\"18px\"> </div></a>                </li>\r\n            <li><a [routerLink]=\"['/transactionsview']\">Transactions<div class=\"pull-right\" style=\"margin-right:10px;\"> <img src=\"assets/trending-up.svg\" height=\"18px\"> </div></a></li>\r\n            <li><a [routerLink]=\"['/errorsview']\">Errors<div class=\"pull-right\" style=\"margin-right:10px;\"> <img src=\"assets/alert-triangle.svg\" height=\"18px\"> </div></a></li>\r\n            <li *ngIf=\"isAdmin\"><a [routerLink]=\"['/manageusers']\">Manage Users<div class=\"pull-right\" style=\"margin-right:10px;\"> <img src=\"assets/users.svg\" height=\"18px\"> </div></a></li>\r\n            <li *ngIf=\"isAdmin\"><a [routerLink]=\"['/managenotifications']\">Manage Notifications<div class=\"pull-right\" style=\"margin-right:10px;\"> <img src=\"assets/bell.svg\" height=\"18px\"> </div></a></li>\r\n            <li *ngIf=\"isAdmin\"><a [routerLink]=\"['/uploadlog']\">Upload Log Files<div class=\"pull-right\" style=\"margin-right:10px;\"> <img src=\"assets/upload.svg\" height=\"18px\"> </div></a></li>\r\n\r\n        </ul>\r\n\r\n\r\n\r\n    </div>\r\n\r\n    <div class=\"col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 p-0\">\r\n\r\n        <!--<div class=\"col-md-6 drop-down-padding\">\r\n                    <select [(ngModel)]=\"selLogName\" class=\"form-control\" (ngModelChange)=\"changeLog()\">\r\n                  <option *ngFor=\"let log of logNames\">\r\n                    {{ log['logName'] }}\r\n                  </option>\r\n                </select>-->\r\n\r\n        <div class=\"topbar\">\r\n            <label>Selected Log : </label>\r\n\r\n            <button class=\"btn btn-default navbar-btn\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarToggleExternalContent\"\r\n                aria-controls=\"navbarToggleExternalContent\" (click)=\"fixui()\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">   \r\n                {{selLogName}} <img src=\"assets/arrow-down-circle.svg\" height=\"18px\"> \r\n                      </button>\r\n            <ul class=\"nav navbar-nav navbar-right\">\r\n                <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\"><a [routerLink]=\"['/profile']\"><img src=\"assets/user.svg\" height=\"16px\"> </a></li>\r\n                <li *ngIf=\"authService.loggedIn()\"><a (click)=\"onLogoutClick()\" [routerLink]=\"['/home']\"><img src=\"assets/log-out.svg\" height=\"18px\"></a></li>\r\n            </ul>\r\n            <div class=\"collapse logselect\" id=\"navbarToggleExternalContent\">\r\n\r\n                <div class=\"col-6 inline\">\r\n                    <label><img src=\"assets/map-pin.svg\" height=\"16px\">Location:</label>\r\n                    <select [(ngModel)]=\"selLocation\" (ngModelChange)=\"changeLogList()\" class=\"form-control\">\r\n                                                                    <option>Any</option>\r\n                                                                    <option *ngFor=\"let log of logLocations\">\r\n                                                                            {{ log['location'] }}\r\n                                                                          </option>\r\n                                                              </select>\r\n\r\n                </div>\r\n                <div class=\"col-6 inline\">\r\n                    <label><img src=\"assets/calendar.svg\" height=\"16px\"> Date:</label>\r\n\r\n                    <input type=\"date\" [(ngModel)]=\"selDate\" (ngModelChange)=\"changeLogList()\" class=\"form-control\">\r\n                </div>\r\n\r\n                <div style=\"margin-bottom: 20px;\">\r\n                    <label><img src=\"assets/file-text.svg\" height=\"16px\"> Log Name:</label>\r\n                    <select [(ngModel)]=\"selLogName\" class=\"form-control\" (ngModelChange)=\"changeLog()\">\r\n                                                                        <option *ngFor=\"let log of logNames\">\r\n                                                                          {{ log['logName'] }}\r\n                                                                        </option>\r\n                                                                      </select>\r\n                </div>\r\n\r\n\r\n            </div>\r\n\r\n        </div>\r\n\r\n        <div id=\"ro\" class=\"dash-content fullheight background-body scrolly body-padding drop-down\">\r\n            <router-outlet></router-outlet>\r\n\r\n        </div>\r\n\r\n\r\n    </div>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -2063,6 +2301,8 @@ var DashComponent = /** @class */ (function () {
     DashComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.isAdmin = this.authService.isAdmin();
+        this.username = this.authService.getUserName();
+        //console.log(this.username);
         this.logService.getLogNames().subscribe(function (data) {
             _this.logNames = data.log;
         });
@@ -2115,6 +2355,11 @@ var DashComponent = /** @class */ (function () {
         this.selLogName = this.logNames[0]['logName'];
         this.changeLog();
     };
+    DashComponent.prototype.fixui = function () {
+        var elem = document.getElementById("ro");
+        elem.classList.toggle("fix-scrolly");
+        console.log("dsadasdassdasd");
+    };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('root'),
         __metadata("design:type", Object)
@@ -2166,24 +2411,24 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.registerUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('users/register', user, { headers: headers }).map(function (res) { return res.json(); });
+        return this.http.post('http://localhost:3000/users/register', user, { headers: headers }).map(function (res) { return res.json(); });
     };
     AuthService.prototype.authenticateUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('users/authenticate', user, { headers: headers }).map(function (res) { return res.json(); });
+        return this.http.post('http://localhost:3000/users/authenticate', user, { headers: headers }).map(function (res) { return res.json(); });
     };
     AuthService.prototype.findUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('users/finduser', user, { headers: headers }).map(function (res) { return res.json(); });
+        return this.http.post('http://localhost:3000/users/finduser', user, { headers: headers }).map(function (res) { return res.json(); });
     };
     AuthService.prototype.getProfile = function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         this.loadToken();
         headers.append('Authorization', this.authToken);
         headers.append('Content-Type', 'application/json');
-        return this.http.get('users/profile', { headers: headers }).map(function (res) { return res.json(); });
+        return this.http.get('http://localhost:3000/users/profile', { headers: headers }).map(function (res) { return res.json(); });
     };
     AuthService.prototype.storeUserData = function (token, user) {
         localStorage.setItem('id_token', token);
@@ -2207,6 +2452,11 @@ var AuthService = /** @class */ (function () {
         }
         else
             return false;
+    };
+    AuthService.prototype.getUserName = function () {
+        this.loadToken();
+        var tasd = JSON.parse(this.user);
+        return tasd.name;
     };
     AuthService.prototype.logout = function () {
         this.authToken = null;
@@ -2257,6 +2507,12 @@ var LogService = /** @class */ (function () {
     }
     LogService.prototype.changeLog = function (logName) {
         this.messageSource.next(logName);
+    };
+    LogService.prototype.saveLog = function (text) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        headers.append('Content-Type', 'application/json');
+        var body = { "text": text };
+        return this.http.post('logdata/savelog', body, { headers: headers }).map(function (res) { return res.json(); });
     };
     LogService.prototype.getLogNames = function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
@@ -2446,6 +2702,36 @@ var UsersService = /** @class */ (function () {
         headers.append('Content-Type', 'application/json');
         var body = { "username": user.username };
         return this.http.post('users/deleteuser', body, { headers: headers }).map(function (res) { return res.json(); });
+    };
+    UsersService.prototype.sendNotification = function (title, nbody) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        this.loadToken();
+        headers.append('Authorization', this.authToken);
+        headers.append('Content-Type', 'application/json');
+        var body = { "title": title, "body": nbody };
+        return this.http.post('notifications/sendnotifications', body, { headers: headers }).map(function (res) { return res.json(); });
+    };
+    UsersService.prototype.getNotifications = function () {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        this.loadToken();
+        headers.append('Authorization', this.authToken);
+        headers.append('Content-Type', 'application/json');
+        return this.http.get('notifications/getnotifications', { headers: headers }).map(function (res) { return res.json(); });
+    };
+    UsersService.prototype.setNotificationTime = function (hour, min) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        this.loadToken();
+        headers.append('Authorization', this.authToken);
+        headers.append('Content-Type', 'application/json');
+        var body = { "hour": hour, "min": min };
+        return this.http.post('setnotificationtime', body, { headers: headers }).map(function (res) { return res.json(); });
+    };
+    UsersService.prototype.getNotificationTime = function () {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        this.loadToken();
+        headers.append('Authorization', this.authToken);
+        headers.append('Content-Type', 'application/json');
+        return this.http.get('getnotificationtime', { headers: headers }).map(function (res) { return res.json(); });
     };
     UsersService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
