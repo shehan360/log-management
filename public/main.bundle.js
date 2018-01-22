@@ -2739,7 +2739,8 @@ var UsersService = /** @class */ (function () {
         this.loadToken();
         headers.append('Authorization', this.authToken);
         headers.append('Content-Type', 'application/json');
-        return this.http.get('notificationsettings/getnotificationtime', { headers: headers }).map(function (res) { return res.json(); });
+        var body = {};
+        return this.http.post('notificationsettings/getnotificationtime', body, { headers: headers }).map(function (res) { return res.json(); });
     };
     UsersService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),

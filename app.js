@@ -100,7 +100,7 @@ app.post('/notificationsettings/setnotificationtime',passport.authenticate('jwt'
         res.json({sucess:false,msg:"Time not set"});
 });
 
-app.get('/notificationsettings/getnotificationtime',passport.authenticate('jwt', { session: false }),function(ewq,res){
+app.post('/notificationsettings/getnotificationtime',passport.authenticate('jwt', { session: false }),function(req,res,next){
     if(hour&&min){
         res.json({hour:hour,min:min});
     }
