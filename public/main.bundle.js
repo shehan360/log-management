@@ -157,17 +157,6 @@ var appRoutes = [
         ]
     }
 ];
-/**
-{path:'',component:HomeComponent},
-{path:'register',component:RegisterComponent},
-{path:'login',component:LoginComponent},
-{path:'dashboard',component:DashboardComponent,canActivate:[AuthGuard]},
-{path:'profile',component:ProfileComponent, canActivate:[AuthGuard]},
-{ path: 'summary', component: DayViewComponent },
-{ path: 'detailedview', component: DetailedViewComponent },
-{ path: 'criticalerrors', component: CriticalErrorsViewComponent }
-]
-**/
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -2363,6 +2352,7 @@ var DashComponent = /** @class */ (function () {
         });
         this.logService.getLogLocations().subscribe(function (data) {
             _this.logLocations = data.log;
+            console.log(_this.logLocations);
         });
     };
     DashComponent.prototype.onLogoutClick = function () {
@@ -2410,7 +2400,6 @@ var DashComponent = /** @class */ (function () {
     DashComponent.prototype.fixui = function () {
         var elem = document.getElementById("ro");
         elem.classList.toggle("fix-scrolly");
-        console.log("dsadasdassdasd");
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('root'),
