@@ -302,7 +302,11 @@ var DayViewComponent = /** @class */ (function () {
                 _this.totalTAmount = data[0].amount;
             });
             _this.logService.getNoFailedTransactions(currentLog).subscribe(function (data) {
-                _this.failedTransactions = data[0].count;
+                if (data.length > 0) {
+                    _this.failedTransactions = data[0].count;
+                }
+                else
+                    _this.failedTransactions = 0;
             });
             _this.logService.getTransactionSummaryByType(currentLog).subscribe(function (data) {
                 _this.transactionsByType = data;
@@ -326,7 +330,11 @@ var DayViewComponent = /** @class */ (function () {
                     _this.noUserErrors = 0;
             });
             _this.logService.getNoTransactionTechnicalErrors(currentLog).subscribe(function (data) {
-                _this.noTechnicalTransactionErrors = data[0].count;
+                if (data > 0) {
+                    _this.noTechnicalTransactionErrors = data[0].count;
+                }
+                else
+                    _this.noTechnicalTransactionErrors = 0;
             });
             _this.logService.getNoTechnicalErrors(currentLog).subscribe(function (data) {
                 if (data.length > 0) {
