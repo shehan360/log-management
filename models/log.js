@@ -88,7 +88,7 @@ module.exports.uploadLog = function (log, callback) {
 }
 
 module.exports.getLocations = function (callback) {
-  Log.find({}, { '_id': 0, 'location': 1 }).distinct('location').exec(callback);
+  Log.find({}, { '_id': 0, 'location': 1 }).distinct('location',callback);
 }
 
 
