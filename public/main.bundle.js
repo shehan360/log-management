@@ -464,12 +464,13 @@ var ErrorsViewComponent = /** @class */ (function () {
             });
             //this.allErrors.push(new Error(null,this.logDateO,"none"));
             _this.logService.getNoTechnicalErrors(currentLog).subscribe(function (data) {
-                _this.noTechnicalErrors = data[0].count;
-                if (_this.noTechnicalErrors > 0) {
+                if (data.length > 0) {
+                    _this.noTechnicalErrors = data[0].count;
                     _this.showTechnicalErrors = true;
                 }
                 else {
                     _this.showTechnicalErrors = false;
+                    _this.noTechnicalErrors = 0;
                 }
             });
             _this.logService.getNoTransactionTechnicalErrors(currentLog).subscribe(function (data) {
@@ -514,12 +515,13 @@ var ErrorsViewComponent = /** @class */ (function () {
                 });
             });
             _this.logService.getNoUserErrors(currentLog).subscribe(function (data) {
-                _this.noUserErrors = data[0].count;
-                if (_this.noUserErrors > 0) {
+                if (data.length > 0) {
+                    _this.noUserErrors = data[0].count;
                     _this.showUserErrors = true;
                 }
                 else {
                     _this.showUserErrors = false;
+                    _this.noUserErrors = 0;
                 }
             });
             _this.logService.getUserErrorPoints(currentLog).subscribe(function (data) {
