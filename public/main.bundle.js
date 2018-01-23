@@ -319,13 +319,21 @@ var DayViewComponent = /** @class */ (function () {
                 }
             });
             _this.logService.getNoUserErrors(currentLog).subscribe(function (data) {
-                _this.noUserErrors = data[0].count;
+                if (data.length > 0) {
+                    _this.noUserErrors = data[0].count;
+                }
+                else
+                    _this.noUserErrors = 0;
             });
             _this.logService.getNoTransactionTechnicalErrors(currentLog).subscribe(function (data) {
                 _this.noTechnicalTransactionErrors = data[0].count;
             });
             _this.logService.getNoTechnicalErrors(currentLog).subscribe(function (data) {
-                _this.noTechnicalErrors = data[0].count;
+                if (data.length > 0) {
+                    _this.noTechnicalErrors = data[0].count;
+                }
+                else
+                    _this.noTechnicalErrors = 0;
             });
             _this.logService.getUpDown(currentLog).subscribe(function (data) {
                 _this.updown = data;
